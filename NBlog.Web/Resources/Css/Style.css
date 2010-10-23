@@ -85,16 +85,21 @@ h1, h2, h3, h4, h5, h6, #site-name, #tag-line
 {
 	line-height: 1.2;
 	font-family: 'Trebuchet MS', Arial, sans-serif;
-	color: #000;
+	color: #222;
 	font-weight: bold;
 }
 
-h1 { font-size: 150%; margin:  20px 0 35px 0; padding-bottom: 2px; border-bottom: 1px solid #444; }
+h1 { font-size: 150%; margin:  20px 0 35px 0; padding-bottom: 2px; border-bottom: 1px solid; }
 h2 { font-size: 130%; }
 h3 { font-size: 140%; }
 h4 { font-size: 120%; }
 h5 { font-size: 100%; }
 h6 { font-size: 90%; }
+
+a { text-decoration:none; }
+a:link { border-bottom:1px dotted; color:#04b; }
+a:visited { border-bottom:1px dotted; color:#59d; }
+a:link:hover, a:visited:hover { border-bottom:1px solid; }
 
 .date
 {
