@@ -69,6 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -76,7 +77,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Resources\Css\Handheld.css" />
+    <Content Include="Resources\Css\Style.css" />
+    <Content Include="Resources\Css\Validation.css" />
+    <Content Include="Resources\Scripts\dd_belatedpng.js" />
+    <Content Include="Resources\Scripts\jquery-1.4.3.js" />
+    <Content Include="Resources\Scripts\jquery-1.4.3.min.js" />
+    <Content Include="Resources\Scripts\modernizr-1.5.min.js" />
+    <Content Include="Resources\Scripts\plugins.js" />
+    <Content Include="Resources\Scripts\Profiling\charts.swf" />
+    <Content Include="Resources\Scripts\Profiling\config.js" />
+    <Content Include="Resources\Scripts\Profiling\yahoo-profiling.css" />
+    <Content Include="Resources\Scripts\Profiling\yahoo-profiling.min.js" />
+    <Content Include="Resources\Scripts\script.js" />
+    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -84,24 +98,23 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\MicrosoftAjax.js" />
-    <Content Include="Scripts\MicrosoftAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.js" />
-    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.js" />
-    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Resources\Scripts\jquery.validate.js" />
+    <Content Include="Resources\Scripts\jquery.validate.min.js" />
+    <Content Include="Resources\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Resources\Scripts\MicrosoftAjax.js" />
+    <Content Include="Resources\Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Resources\Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Resources\Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Resources\Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Resources\Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Folder Include="Content\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Layout.master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
