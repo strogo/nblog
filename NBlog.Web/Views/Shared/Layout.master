@@ -1,31 +1,56 @@
 <%@ Master Language="C#" %>
 <!doctype html>
 <html lang="en" class="no-js">
-<head>    <meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
     <!--[if IE]><![endif]-->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Chris Fulstow | Social Media Developer - Sydney</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
-    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/resources/images/apple-touch-icon.png">
     <link rel="stylesheet" href="/resources/css/style.css?v=1">
-    <link rel="stylesheet" media="handheld" href="/resources/css/handheld.css?v=1">    <script src="/resources/scripts/modernizr-1.5.min.js"></script></head><!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
+    <link rel="stylesheet" media="handheld" href="/resources/css/handheld.css?v=1">
+    <script src="/resources/scripts/modernizr-1.5.min.js"></script>
+</head>
+<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
 <!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
 <!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
 <!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 
 <div id="container">
-    <header>
-
+    <header class="fixed-width">
+        
+        <div id="site">
+            <div id="site-name">
+                Chris Fulstow
+            </div>
+            <div id="tag-line">ASP.NET Social Media Developer</div>
+        </div>
+        
+        <div id="topbar">
+            <div id="links">
+                <a href="#">Projects</a> | <a href="#">Contact</a> | <a href="#">Sign In</a>
+            </div>
+            <div id="search">
+                <form>
+                    <input type="text" class="box" name=""q" value="search" />
+                </form>
+            </div>
+        </div>
     </header>
 
     <div id="crossbar">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quam ipsum, laoreet non luctus sit amet, varius sit amet leo. Nullam vel ante massa, at ultricies magna. Nulla sodales tempus mi, id convallis metus gravida eget. Fusce ac magna lacus, sed bibendum lacus. Maecenas consectetur ullamcorper ligula eu tristique. Fusce interdum viverra scelerisque. Nulla interdum vulputate volutpat. Proin dapibus molestie sem, quis dignissim enim mollis eu. Curabitur nisi sapien, sodales nec fringilla ut, blandit at purus. Cras gravida mi non sem scelerisque tristique.
+        <div class="fixed-width">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quam ipsum, laoreet non luctus sit amet, varius sit amet leo. Nullam vel ante massa, at ultricies magna. Nulla sodales tempus mi, id convallis metus gravida eget. Fusce ac magna lacus, sed bibendum lacus. Maecenas consectetur ullamcorper ligula eu tristique. Fusce interdum viverra scelerisque. Nulla interdum vulputate volutpat. Proin dapibus molestie sem, quis dignissim enim mollis eu. Curabitur nisi sapien, sodales nec fringilla ut, blandit at purus. Cras gravida mi non sem scelerisque tristique.
+        </div>
     </div>
 
-    <div id="main">
+    <div id="main" class="fixed-width">
         <asp:ContentPlaceHolder id="MainContent" runat="server"/>
     </div>
     
