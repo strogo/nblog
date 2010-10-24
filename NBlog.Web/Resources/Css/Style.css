@@ -109,12 +109,11 @@ a:link:hover, a:visited:hover { border-bottom:1px solid; }
 
 .fixed-width { width: 960px; margin: 0 auto; }
 
-header {  }
-
-#site-name { font-size: 140%; }
+#site-name, #tag-line { font-size: 140%; }
+#tag-line { color:#4a0; }
 
 #topbar { float: right; margin-top: 6px; }
-#topbar #links { text-align: right;  margin:  0 4px 3px 0; }
+#topbar #links { text-align: right;  margin:  0 4px 7px 0; }
 
 #site { float: left; margin: 13px 0; }
 

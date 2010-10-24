@@ -1,4 +1,4 @@
-<%@ Master Language="C#" %>
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -34,7 +34,7 @@
         
         <div id="topbar">
             <div id="links">
-                <a href="#">Projects</a> | <a href="#">Contact</a> | <a href="#">Sign In</a>
+                <a href="#">Projects</a> | <a href="#">Contact</a> | <%= Html.ActionLink("Sign In", "Login", "Authentication") %>
             </div>
             <div id="search">
                 <form>

@@ -12,6 +12,5 @@ namespace NBlog.Web.Controllers
         {
             return View();
         }
-
     }
 }
