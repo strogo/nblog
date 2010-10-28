@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6, #site-name, #tag-line
 	font-weight: bold;
 }
 
-h1 { font-size: 150%; margin:  20px 0 35px 0; padding-bottom: 2px; border-bottom: 1px solid; }
+h1 { font-size: 150%; margin:  20px 0 35px 0; padding-bottom: 2px; border-bottom: 1px solid; clear: both; }
 h2 { font-size: 130%; }
 h3 { font-size: 140%; }
 h4 { font-size: 120%; }
@@ -107,7 +107,7 @@ a:link:hover, a:visited:hover { border-bottom:1px solid; }
 	text-transform: uppercase;
 }
 
-.fixed-width { width: 960px; margin: 0 auto; }
+.fixed-width, #main, header { width: 960px; margin: 0 auto; }
 
 #site-name, #tag-line { font-size: 140%; }
 #tag-line { color:#4a0; }
@@ -120,7 +120,7 @@ a:link:hover, a:visited:hover { border-bottom:1px solid; }
 #search { clear: both; }
 #search .box { width: 300px; }
 
-#crossbar { background-color: #efefef; border-top : 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 10px 0; clear: both;}
+#crossbar { background-color: #efefef; border-top : 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 10px 0; clear: both; }
 
 /* 
  * print styles

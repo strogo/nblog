@@ -1,4 +1,5 @@
-<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<BaseViewModel>" %>
+<%@ Import Namespace="Microsoft.Security.Application" %>
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -14,6 +15,8 @@
     <link rel="apple-touch-icon" href="/resources/images/apple-touch-icon.png">
     <link rel="stylesheet" href="/resources/css/style.css?v=1">
     <link rel="stylesheet" media="handheld" href="/resources/css/handheld.css?v=1">
+	<link rel="stylesheet" media="screen" href="/resources/scripts/fancybox/jquery.fancybox-1.3.2.css" />
+
     <script src="/resources/scripts/modernizr-1.5.min.js"></script>
 </head>
 <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
@@ -23,7 +26,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <body> <!--<![endif]-->
 
 <div id="container">
-    <header class="fixed-width">
+    <header>
         
         <div id="site">
             <div id="site-name">
@@ -38,31 +41,32 @@
             </div>
             <div id="search">
                 <form>
-                    <input type="text" class="box" name=""q" value="search" />
+                    <input type="text" class="box" name="q" value="search" />
                 </form>
             </div>
         </div>
     </header>
 
-    <div id="crossbar">
-        <div class="fixed-width">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quam ipsum, laoreet non luctus sit amet, varius sit amet leo. Nullam vel ante massa, at ultricies magna. Nulla sodales tempus mi, id convallis metus gravida eget. Fusce ac magna lacus, sed bibendum lacus. Maecenas consectetur ullamcorper ligula eu tristique. Fusce interdum viverra scelerisque. Nulla interdum vulputate volutpat. Proin dapibus molestie sem, quis dignissim enim mollis eu. Curabitur nisi sapien, sodales nec fringilla ut, blandit at purus. Cras gravida mi non sem scelerisque tristique.
-        </div>
-    </div>
-
-    <div id="main" class="fixed-width">
-        <asp:ContentPlaceHolder id="MainContent" runat="server"/>
-    </div>
+    <asp:ContentPlaceHolder id="MainContent" runat="server"/>
     
     <footer>
 
     </footer>
 </div>
 
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
 <script>!window.jQuery && document.write('<script src="/resources/scripts/jquery-1.4.3.min.js"><\/script>')</script>
 <script src="/resources/scripts/plugins.js?v=1"></script>
 <script src="/resources/scripts/script.js?v=1"></script>
+<script src="/resources/scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+<script src="/resources/scripts/fancybox/jquery.fancybox-1.3.2.js"></script>
+
+<script>
+    $(function () {
+        // jQuery magic here
+    });
+</script>
 
 <!--[if lt IE 7 ]>
 <script src="/resources/scripts/js/dd_belatedpng.js?v=1"></script>

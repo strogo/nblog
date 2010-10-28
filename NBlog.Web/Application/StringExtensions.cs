@@ -7,22 +7,22 @@ namespace NBlog.Web.Application
 {
     public static class StringExtensions
     {
+        /// <summary>
+        /// Null if the string is empty, otherwise the original string.
+        /// (Useful to use with with null coalesce, e.g. myString.AsNullIfEmpty() ?? defaultString
+        /// </summary>
         public static string AsNullIfEmpty(this string items)
         {
-            if (String.IsNullOrEmpty(items))
-            {
-                return null;
-            }
-            return items;
+            return string.IsNullOrEmpty(items) ? null : items;
         }
 
+        /// <summary>
+        /// Null if the string is empty or whitespace, otherwise the original string.
+        /// (Useful to use with with null coalesce, e.g. myString.AsNullIfWhiteSpace() ?? defaultString
+        /// </summary>
         public static string AsNullIfWhiteSpace(this string items)
         {
-            if (String.IsNullOrWhiteSpace(items))
-            {
-                return null;
-            }
-            return items;
+            return string.IsNullOrWhiteSpace(items) ? null : items;
         }
     }
 }
