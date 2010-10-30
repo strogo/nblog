@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="/resources/css/style.css?v=1">
     <link rel="stylesheet" media="handheld" href="/resources/css/handheld.css?v=1">
 	<link rel="stylesheet" media="screen" href="/resources/scripts/fancybox/jquery.fancybox-1.3.2.css" />
-
+	<link rel="stylesheet" media="screen" href="/resources/scripts/jQueryOpenIdPlugin/openid.css" />
+    
     <script src="/resources/scripts/modernizr-1.5.min.js"></script>
 </head>
 <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
@@ -61,12 +62,16 @@
 <script src="/resources/scripts/script.js?v=1"></script>
 <script src="/resources/scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 <script src="/resources/scripts/fancybox/jquery.fancybox-1.3.2.js"></script>
+<script src="/resources/scripts/jQueryOpenIdPlugin/jquery.openid.js"></script>
 
 <script>
     $(function () {
         // jQuery magic here
     });
+
 </script>
+
+<asp:ContentPlaceHolder id="Scripts" runat="server"/>
 
 <!--[if lt IE 7 ]>
 <script src="/resources/scripts/js/dd_belatedpng.js?v=1"></script>

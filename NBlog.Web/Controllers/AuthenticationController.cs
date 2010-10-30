@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.Messaging;
 using DotNetOpenAuth.OpenId;
+using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
 using DotNetOpenAuth.OpenId.RelyingParty;
 using NBlog.Web.Application;
@@ -30,11 +31,18 @@ namespace NBlog.Web.Controllers
 
             if (openIdResponse.Status == AuthenticationStatus.Authenticated)
             {
+                // todo: don't think we should ever use this for friendly!
                 var friendlyName = openIdResponse.FriendlyIdentifierForDisplay;
 
                 // if sreg supported, use real name or email as friendly name, whichever is available
                 var sregResponse = openIdResponse.GetExtension<ClaimsResponse>();
-                if (sregResponse != null) { friendlyName = sregResponse.FullName ?? sregResponse.Email; }
+                var axResponse = openIdResponse.GetExtension<FetchResponse>();
+
+                //if (sregResponse != null)
+                //{
+                //    friendlyName = sregResponse.FullName ?? sregResponse.Email;
+                //}
+
 
                 FormsAuthentication.SetAuthCookie(openIdResponse.ClaimedIdentifier, false);
                 return Redirect(returnUrl.AsNullIfEmpty() ?? Url.Action("Index", "Home"));
@@ -50,7 +58,7 @@ namespace NBlog.Web.Controllers
         public ActionResult OpenId(Authentication.LoginModel model)
         {
             Identifier id;
-            if (Identifier.TryParse(model.OpenIdIdentifier, out id))
+            if (Identifier.TryParse(model.OpenID_Identifier, out id))
             {
                 try
                 {
@@ -58,8 +66,18 @@ namespace NBlog.Web.Controllers
                     var returnToUrl = new Uri(Url.Action("OpenIdCallback", "Authentication", new { ReturnUrl = model.ReturnUrl }, Request.Url.Scheme), UriKind.Absolute);
                     var request = openId.CreateRequest(id, Realm.AutoDetect, returnToUrl);
 
-                    // include request for name and email using sreg (OpenID Simple Registration Extension)
-                    request.AddExtension(new ClaimsRequest { Email = DemandLevel.Request, FullName = DemandLevel.Request });
+                    // add request for name and email using sreg (OpenID Simple Registration Extension)
+                    request.AddExtension(new ClaimsRequest
+                    {
+                        Email = DemandLevel.Request, FullName = DemandLevel.Request, Nickname = DemandLevel.Require
+                    });
+
+                    // also add AX request
+                    var axRequest = new FetchRequest();
+                    axRequest.Attributes.AddRequired(WellKnownAttributes.Name.FullName);
+                    axRequest.Attributes.AddRequired(WellKnownAttributes.Name.First);
+                    axRequest.Attributes.AddRequired(WellKnownAttributes.Name.Last);
+                    request.AddExtension(axRequest);
 
                     return request.RedirectingResponse.AsActionResult();
                 }

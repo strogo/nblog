@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Web.Mvc;
 using NBlog.Web.Controllers;
 
 namespace NBlog.Web.Models
@@ -7,8 +8,7 @@ namespace NBlog.Web.Models
     {
         public class LoginModel : BaseViewModel
         {
-            [DisplayName("OpenID")]
-            public string OpenIdIdentifier { get; set; }
+            public string OpenID_Identifier { get; set; }
             public string ReturnUrl { get; set; }
             public string Message { get; set; }
         }
