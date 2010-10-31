@@ -11,7 +11,7 @@ using NBlog.Web.Models;
 
 namespace NBlog.Web.Controllers
 {
-    public partial class AuthenticationController : Controller
+    public partial class AuthenticationController : BaseController
     {
         [HttpGet]
         public ActionResult Login(string returnUrl)

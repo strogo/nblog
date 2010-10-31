@@ -91,13 +91,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\AdminOnlyAttribute.cs" />
+    <Compile Include="Application\BaseController.cs" />
     <Compile Include="Application\Html\SecurityExtensions.cs" />
     <Compile Include="Application\Settings.cs" />
     <Compile Include="Application\StringExtensions.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Models\Authentication.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Application\BaseViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,6 +169,7 @@
     <Content Include="Resources\Scripts\Profiling\yahoo-profiling.css" />
     <Content Include="Resources\Scripts\Profiling\yahoo-profiling.min.js" />
     <Content Include="Resources\Scripts\script.js" />
+    <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Authentication\Login.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Web.config" />
