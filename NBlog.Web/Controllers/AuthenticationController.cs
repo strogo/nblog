@@ -21,38 +21,6 @@ namespace NBlog.Web.Controllers
         }
 
 
-        [HttpGet]
-        [ValidateInput(false)]
-        public ActionResult OpenIdCallback(string returnUrl)
-        {
-            var model = new Authentication.LoginModel { ReturnUrl = returnUrl };
-            var openId = new OpenIdRelyingParty();
-            var openIdResponse = openId.GetResponse();
-
-            if (openIdResponse.Status == AuthenticationStatus.Authenticated)
-            {
-                // todo: don't think we should ever use this for friendly!
-                var friendlyName = openIdResponse.FriendlyIdentifierForDisplay;
-
-                // if sreg supported, use real name or email as friendly name, whichever is available
-                var sregResponse = openIdResponse.GetExtension<ClaimsResponse>();
-                var axResponse = openIdResponse.GetExtension<FetchResponse>();
-
-                //if (sregResponse != null)
-                //{
-                //    friendlyName = sregResponse.FullName ?? sregResponse.Email;
-                //}
-
-
-                FormsAuthentication.SetAuthCookie(openIdResponse.ClaimedIdentifier, false);
-                return Redirect(returnUrl.AsNullIfEmpty() ?? Url.Action("Index", "Home"));
-            }
-
-            model.Message = "Sorry, login failed.";
-            return View("Login", model);
-        }
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult OpenId(Authentication.LoginModel model)
@@ -92,6 +60,39 @@ namespace NBlog.Web.Controllers
                 model.Message = "Invalid identifier";
                 return View("Login", model);
             }
+        }
+
+
+        [HttpGet]
+        [ValidateInput(false)]
+        public ActionResult OpenIdCallback(string returnUrl)
+        {
+            var model = new Authentication.LoginModel { ReturnUrl = returnUrl };
+            var openId = new OpenIdRelyingParty();
+            var openIdResponse = openId.GetResponse();
+
+            if (openIdResponse.Status == AuthenticationStatus.Authenticated)
+            {
+                // todo: don't think we should ever use this for friendly!
+                var friendlyName = openIdResponse.FriendlyIdentifierForDisplay;
+
+                // if sreg supported, use real name or email as friendly name, whichever is available
+                var sregResponse = openIdResponse.GetExtension<ClaimsResponse>();
+                var axResponse = openIdResponse.GetExtension<FetchResponse>();
+
+                // todo: build the friendlyname
+
+                //if (sregResponse != null)
+                //{
+                //    friendlyName = sregResponse.FullName ?? sregResponse.Email;
+                //}
+
+                FormsAuthentication.SetAuthCookie(openIdResponse.ClaimedIdentifier, false);
+                return Redirect(returnUrl.AsNullIfEmpty() ?? Url.Action("Index", "Home"));
+            }
+
+            model.Message = "Sorry, login failed.";
+            return View("Login", model);
         }
     }
 }

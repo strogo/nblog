@@ -40,13 +40,25 @@
     <Reference Include="AntiXSSLibrary">
       <HintPath>..\packages\AntiXSS.4.0.1\lib\net35\AntiXSSLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.2.2.4.900\lib\NET40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web">
+      <HintPath>..\packages\Autofac.MVC2.2.2.4.900\lib\NET40\Autofac.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Web.Mvc">
+      <HintPath>..\packages\Autofac.MVC2.2.2.4.900\lib\NET40\Autofac.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth">
-      <HintPath>..\Libraries\DotNetOpenAuth.dll</HintPath>
+      <HintPath>..\packages\DotNetOpenAuth.3.4.5.10202\lib\DotNetOpenAuth.dll</HintPath>
     </Reference>
     <Reference Include="HtmlSanitizationLibrary">
       <HintPath>..\packages\AntiXSS.4.0.1\lib\net35\HtmlSanitizationLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.3.5.8\lib\35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -78,7 +90,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\AdminOnlyAttribute.cs" />
     <Compile Include="Application\Html\SecurityExtensions.cs" />
+    <Compile Include="Application\Settings.cs" />
     <Compile Include="Application\StringExtensions.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Models\Authentication.cs" />
@@ -173,7 +187,9 @@
     <Content Include="Resources\Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App_Data\Settings.json" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Layout.master" />
   </ItemGroup>
