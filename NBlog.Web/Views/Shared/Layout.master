@@ -30,9 +30,9 @@
     <header>
         <div id="site">
             <div id="site-name">
-                Chris Fulstow
+                Test1
             </div>
-            <div id="tag-line">ASP.NET Social Media Developer</div>
+            <div id="tag-line">Test2</div>
         </div>
         
         <div id="topbar">
