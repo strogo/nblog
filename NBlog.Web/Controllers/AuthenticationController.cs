@@ -8,6 +8,8 @@ using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
 using DotNetOpenAuth.OpenId.RelyingParty;
 using NBlog.Web.Application;
 using NBlog.Web.Models;
+using System.Web;
+using System.Web.Configuration;
 
 namespace NBlog.Web.Controllers
 {
@@ -18,6 +20,16 @@ namespace NBlog.Web.Controllers
         {
             var model = new Authentication.LoginModel { ReturnUrl = returnUrl.AsNullIfEmpty() ?? Url.Action("Index", "Home") };
             return View(model);
+        }
+
+        
+        [HttpGet]
+        public ActionResult Logout(string returnUrl)
+        {
+            FormsAuthentication.SignOut();
+
+            var url = returnUrl.AsNullIfEmpty() ?? Url.Action("Index", "Home");
+            return Redirect(url);
         }
 
 
@@ -37,7 +49,9 @@ namespace NBlog.Web.Controllers
                     // add request for name and email using sreg (OpenID Simple Registration Extension)
                     request.AddExtension(new ClaimsRequest
                     {
-                        Email = DemandLevel.Request, FullName = DemandLevel.Request, Nickname = DemandLevel.Require
+                        Email = DemandLevel.Require,
+                        FullName = DemandLevel.Require,
+                        Nickname = DemandLevel.Require
                     });
 
                     // also add AX request
@@ -45,6 +59,7 @@ namespace NBlog.Web.Controllers
                     axRequest.Attributes.AddRequired(WellKnownAttributes.Name.FullName);
                     axRequest.Attributes.AddRequired(WellKnownAttributes.Name.First);
                     axRequest.Attributes.AddRequired(WellKnownAttributes.Name.Last);
+                    axRequest.Attributes.AddRequired(WellKnownAttributes.Contact.Email);
                     request.AddExtension(axRequest);
 
                     return request.RedirectingResponse.AsActionResult();
@@ -73,26 +88,85 @@ namespace NBlog.Web.Controllers
 
             if (openIdResponse.Status == AuthenticationStatus.Authenticated)
             {
-                // todo: don't think we should ever use this for friendly!
-                var friendlyName = openIdResponse.FriendlyIdentifierForDisplay;
+                var friendlyName = GetFriendlyName(openIdResponse);
 
-                // if sreg supported, use real name or email as friendly name, whichever is available
-                var sregResponse = openIdResponse.GetExtension<ClaimsResponse>();
-                var axResponse = openIdResponse.GetExtension<FetchResponse>();
+                var isPersistentCookie = true;
+                SetAuthCookie(openIdResponse.ClaimedIdentifier, isPersistentCookie, friendlyName);
 
-                // todo: build the friendlyname
-
-                //if (sregResponse != null)
-                //{
-                //    friendlyName = sregResponse.FullName ?? sregResponse.Email;
-                //}
-
-                FormsAuthentication.SetAuthCookie(openIdResponse.ClaimedIdentifier, false);
                 return Redirect(returnUrl.AsNullIfEmpty() ?? Url.Action("Index", "Home"));
             }
 
             model.Message = "Sorry, login failed.";
             return View("Login", model);
+        }
+
+
+        private void SetAuthCookie(string username, bool createPersistentCookie, string userData)
+        {
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentNullException("username");
+
+            var authenticationConfig =
+                (AuthenticationSection)WebConfigurationManager.GetWebApplicationSection("system.web/authentication");
+
+            var timeout = (int)authenticationConfig.Forms.Timeout.TotalMinutes;
+            var expiry = DateTime.Now.AddMinutes((double)timeout);
+
+            FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(2,
+              username,
+              DateTime.Now,
+              expiry,
+              createPersistentCookie,
+              userData,
+              FormsAuthentication.FormsCookiePath);
+
+            string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+
+            var cookie = new HttpCookie(FormsAuthentication.FormsCookieName)
+            {
+                Value = encryptedTicket,
+                HttpOnly = true,
+                Secure = authenticationConfig.Forms.RequireSSL
+            };
+
+            if (ticket.IsPersistent)
+                cookie.Expires = ticket.Expiration;
+
+            Response.Cookies.Add(cookie);
+        }
+
+
+        private string GetFriendlyName(IAuthenticationResponse authResponse)
+        {
+            string friendlyName = "";
+
+            var sregResponse = authResponse.GetExtension<ClaimsResponse>();
+            var axResponse = authResponse.GetExtension<FetchResponse>();
+
+            if (sregResponse != null)
+            {
+                friendlyName =
+                    sregResponse.FullName.AsNullIfEmpty() ??
+                    sregResponse.Nickname.AsNullIfEmpty() ??
+                    sregResponse.Email;
+            }
+            else if (axResponse != null)
+            {
+                var fullName = axResponse.GetAttributeValue(WellKnownAttributes.Name.FullName);
+                var firstName = axResponse.GetAttributeValue(WellKnownAttributes.Name.First);
+                var lastName = axResponse.GetAttributeValue(WellKnownAttributes.Name.Last);
+                var email = axResponse.GetAttributeValue(WellKnownAttributes.Contact.Email);
+
+                friendlyName =
+                    fullName.AsNullIfEmpty() ??
+                    ((!string.IsNullOrEmpty(firstName) && !string.IsNullOrEmpty(lastName)) ? firstName + " " + lastName : null) ??
+                    email;
+            }
+
+            if (string.IsNullOrEmpty(friendlyName))
+                friendlyName = authResponse.FriendlyIdentifierForDisplay;
+
+            return friendlyName;
         }
     }
 }

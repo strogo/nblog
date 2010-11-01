@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace NBlog.Web.Application
 {
@@ -24,7 +25,11 @@ namespace NBlog.Web.Application
 
         private void InitialiseBaseViewModel(BaseViewModel model)
         {
-            model.FriendlyUsername = User.Identity.Name;
+            var formsIdentity = User.Identity as FormsIdentity;
+            var friendlyName = formsIdentity != null ? formsIdentity.Ticket.UserData : User.Identity.Name;
+            if (string.IsNullOrEmpty(friendlyName)) { friendlyName = User.Identity.Name; }
+
+            model.FriendlyUsername = friendlyName;
             model.IsAuthenticated = User.Identity.IsAuthenticated;
         }
     }

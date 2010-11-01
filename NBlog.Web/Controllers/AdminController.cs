@@ -7,7 +7,7 @@ using NBlog.Web.Application;
 
 namespace NBlog.Web.Controllers
 {
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         [HttpGet]
         [AdminOnly]

@@ -9,7 +9,7 @@
     </div>
 
     <div id="main">
-        <h1>Most recent entries</h1>
+        <h1>Heading 1</h1>
     </div>
 
 </asp:Content>

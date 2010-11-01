@@ -149,6 +149,7 @@
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\googleW.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\livejournal.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\myopenid.png" />
+    <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\myopenidB.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\myopenidW.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\myspaceW.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\openidB.png" />

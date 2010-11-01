@@ -1,4 +1,6 @@
-﻿namespace NBlog.Web.Application
+﻿using System.Web.Mvc;
+using System.Web;
+namespace NBlog.Web.Application
 {
     public class BaseViewModel
     {
