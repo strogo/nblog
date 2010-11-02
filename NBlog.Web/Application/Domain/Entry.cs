@@ -24,6 +24,7 @@ namespace NBlog.Web.Application.Domain
             } 
         }
 
+        public DateTime DateCreated { get; set; }
         public string Markdown { get; set; }
 
         public Entry() { }

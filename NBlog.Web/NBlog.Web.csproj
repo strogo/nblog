@@ -94,6 +94,10 @@
     <Compile Include="Application\BaseController.cs" />
     <Compile Include="Application\Domain\Entry.cs" />
     <Compile Include="Application\Html\SecurityExtensions.cs" />
+    <Compile Include="Application\Storage\EntryRepository.cs" />
+    <Compile Include="Application\Storage\IReadOnlySession.cs" />
+    <Compile Include="Application\Storage\ISession.cs" />
+    <Compile Include="Application\Storage\JsonRepository.cs" />
     <Compile Include="Application\Settings.cs" />
     <Compile Include="Application\StringExtensions.cs" />
     <Compile Include="Controllers\AdminController.cs" />
