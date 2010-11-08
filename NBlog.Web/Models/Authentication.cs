@@ -7,7 +7,7 @@ namespace NBlog.Web.Models
 {
     public class Authentication
     {
-        public class LoginModel : BaseViewModel
+        public class LoginModel : LayoutViewModel
         {
             public string OpenID_Identifier { get; set; }
             public string ReturnUrl { get; set; }

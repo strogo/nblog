@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using Autofac.Integration.Web;
 using NBlog.Web.Application;
+using NBlog.Web.Application.Service;
 using Newtonsoft.Json;
 
 namespace NBlog.Web.Controllers
 {
-    public class HomeController : BaseController
+    public class HomeController : LayoutController
     {
+        public HomeController(Services services) : base(services) { }
+
         [HttpGet]
         public ActionResult Index()
         {

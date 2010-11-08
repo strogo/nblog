@@ -10,6 +10,9 @@ using Autofac;
 using Autofac.Integration.Web;
 using Autofac.Integration.Web.Mvc;
 using NBlog.Web.Application;
+using NBlog.Web.Application.Service;
+using NBlog.Web.Application.Storage;
+using NBlog.Web.Application.Storage.Json;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -28,23 +31,30 @@ namespace NBlog.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            // homepage
+            routes.MapRoute("", "", new { controller = "Home", action = "Index" });
+
+            // general route
+            routes.MapRoute("", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
+            
+            // entry pages
+            routes.MapRoute("", "{slug}", new { controller = "Entry", action = "Show" });
         }
 
         protected void Application_Start()
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<ExtensibleActionInvoker>().As<IActionInvoker>().HttpRequestScoped(); 
+            builder.RegisterType<ExtensibleActionInvoker>().As<IActionInvoker>().HttpRequestScoped();
             builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker().HttpRequestScoped();
 
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<Settings>().HttpRequestScoped();
+            builder.RegisterType<JsonRepository>().HttpRequestScoped();
+            builder.RegisterType<ConfigService>().HttpRequestScoped();
+            builder.RegisterType<EntryService>().HttpRequestScoped();
+            builder.RegisterType<UserService>().HttpRequestScoped();
+            builder.RegisterType<Services>().HttpRequestScoped();
 
             _containerProvider = new ContainerProvider(builder.Build());
 

@@ -7,14 +7,17 @@ using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using DotNetOpenAuth.OpenId.Extensions.SimpleRegistration;
 using DotNetOpenAuth.OpenId.RelyingParty;
 using NBlog.Web.Application;
+using NBlog.Web.Application.Service;
 using NBlog.Web.Models;
 using System.Web;
 using System.Web.Configuration;
 
 namespace NBlog.Web.Controllers
 {
-    public partial class AuthenticationController : BaseController
+    public partial class AuthenticationController : LayoutController
     {
+        public AuthenticationController(Services services) : base(services) { }
+
         [HttpGet]
         public ActionResult Login(string returnUrl)
         {

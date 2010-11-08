@@ -91,21 +91,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\AdminOnlyAttribute.cs" />
-    <Compile Include="Application\BaseController.cs" />
-    <Compile Include="Application\Domain\Entry.cs" />
+    <Compile Include="Application\Service\Entity\Config.cs" />
+    <Compile Include="Application\Service\Services.cs" />
+    <Compile Include="Application\LayoutController.cs" />
+    <Compile Include="Application\Service\Entity\Entry.cs" />
+    <Compile Include="Application\Service\Entity\User.cs" />
+    <Compile Include="Application\Service\EntryService.cs" />
+    <Compile Include="Application\Service\UserService.cs" />
     <Compile Include="Application\Html\SecurityExtensions.cs" />
-    <Compile Include="Application\Storage\EntryRepository.cs" />
-    <Compile Include="Application\Storage\IReadOnlySession.cs" />
-    <Compile Include="Application\Storage\ISession.cs" />
-    <Compile Include="Application\Storage\JsonRepository.cs" />
-    <Compile Include="Application\Settings.cs" />
+    <Compile Include="Application\Service\ConfigService.cs" />
+    <Compile Include="Application\Storage\Json\JsonRepository.cs" />
     <Compile Include="Application\StringExtensions.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Models\Authentication.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Application\BaseViewModel.cs" />
+    <Compile Include="Application\LayoutViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -178,7 +180,9 @@
     <Content Include="Resources\Scripts\script.js" />
     <Content Include="Views\Admin\Index.aspx" />
     <Content Include="Views\Authentication\Login.aspx" />
+    <Content Include="Views\Entry\Add.aspx" />
     <Content Include="Views\Entry\Index.aspx" />
+    <Content Include="Views\Entry\Show.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -199,7 +203,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\Settings.json" />
+    <None Include="App_Data\Config\site.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Layout.master" />

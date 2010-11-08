@@ -4,11 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using NBlog.Web.Application;
+using NBlog.Web.Application.Service;
 
 namespace NBlog.Web.Controllers
 {
-    public class AdminController : BaseController
+    public class AdminController : LayoutController
     {
+        public AdminController(Services services) : base(services) {}
+
         [HttpGet]
         [AdminOnly]
         public ActionResult Index()
