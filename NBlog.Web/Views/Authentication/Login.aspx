@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Layout.master" Inherits="ViewPage<Authentication.LoginModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Layout.master" Inherits="ViewPage<NBlog.Web.Controllers.Authentication.LoginModel>" %>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
 <div id="main">

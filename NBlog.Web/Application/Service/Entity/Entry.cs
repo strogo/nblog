@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NBlog.Web.Application.Domain.Entity
+namespace NBlog.Web.Application.Service.Entity
 {
     public class Entry
     {

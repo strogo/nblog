@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Add new Entry</h2>
+    <h2>Edit Entry</h2>
 
 </asp:Content>
 

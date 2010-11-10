@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
 using Autofac;
+using Autofac.Core;
 using Autofac.Integration.Web;
 using Autofac.Integration.Web.Mvc;
 using NBlog.Web.Application;
@@ -50,7 +51,7 @@ namespace NBlog.Web
 
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<JsonRepository>().HttpRequestScoped();
+            builder.RegisterType<JsonRepository>().As<IRepository>().HttpRequestScoped().WithParameter("physicalPath", HttpContext.Current.Server.MapPath("~/App_Data/"));
             builder.RegisterType<ConfigService>().HttpRequestScoped();
             builder.RegisterType<EntryService>().HttpRequestScoped();
             builder.RegisterType<UserService>().HttpRequestScoped();

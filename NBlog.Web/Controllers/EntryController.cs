@@ -1,35 +1,52 @@
 ﻿using System.Web.Mvc;
 using NBlog.Web.Application;
-using NBlog.Web.Application.Domain;
-using NBlog.Web.Application.Domain.Entity;
 using NBlog.Web.Application.Service;
 
 namespace NBlog.Web.Controllers
 {
-    public class EntryController : LayoutController
+    public partial class EntryController : LayoutController
     {
         public EntryController(Services services) : base(services) { }
 
+        [HttpGet]
         public ActionResult Show(string slug)
         {
             return View();
         }
 
-        public ActionResult Add()
+        [HttpGet]
+        public ActionResult List()
         {
-            var entry = new Entry
-            {
-                Title = "Chris Testing! 123", Markdown = "Some markdown"
-            };
+            return new EmptyResult();
+        }
 
-            Services.Entry.Add(entry);
+        [AdminOnly]
+        [HttpGet]
+        public ActionResult Edit([Bind(Prefix = "id")] string slug)
+        {
+            var isCreatingNew = string.IsNullOrWhiteSpace(slug);
+
+            if (isCreatingNew)
+            {
+                return View();
+            }
+            else
+            {
+                var entry = Services.Entry.GetBySlug(slug);
+            }
 
             return View();
         }
 
-        public ActionResult List()
+        [AdminOnly]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Edit(EditModel model)
         {
-            return new EmptyResult();
+            // todo: this could be a different InputModel
+            // todo: input validation
+
+            return View();
         }
     }
 }

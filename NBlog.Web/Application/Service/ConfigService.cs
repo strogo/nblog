@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web;
 using NBlog.Web.Application.Service.Entity;
+using NBlog.Web.Application.Storage;
 using NBlog.Web.Application.Storage.Json;
 using Newtonsoft.Json;
 
@@ -8,17 +9,14 @@ namespace NBlog.Web.Application.Service
 {
     public class ConfigService
     {
-        private readonly JsonRepository _repository;
+        private readonly IRepository _repository;
 
-        public ConfigService(JsonRepository repository)
+        public ConfigService(IRepository repository)
         {
             _repository = repository;
-            Current = _repository.Single<Config>("site");
+            Current = _repository.Single<Config, string>("site");
         }
 
         public Config Current { get; private set; }
-
-        [JsonProperty]
-        public List<string> Admins { get; private set; }
     }
 }

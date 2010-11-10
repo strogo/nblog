@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Security;
-using NBlog.Web.Application.Domain.Entity;
+using NBlog.Web.Application.Service.Entity;
 
 namespace NBlog.Web.Application.Service
 {
@@ -20,8 +20,8 @@ namespace NBlog.Web.Application.Service
 
             var isAdmin =
                 identity.IsAuthenticated
-                && _configService.Admins != null
-                && _configService.Admins.Contains(identity.Name, StringComparer.InvariantCultureIgnoreCase);
+                && _configService.Current.Admins != null
+                && _configService.Current.Admins.Contains(identity.Name, StringComparer.InvariantCultureIgnoreCase);
 
             var user = new User
             {

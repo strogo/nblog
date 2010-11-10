@@ -1,11 +1,8 @@
-﻿using System.ComponentModel;
-using System.Web.Mvc;
-using NBlog.Web.Application;
-using NBlog.Web.Controllers;
+﻿using NBlog.Web.Application;
 
-namespace NBlog.Web.Models
+namespace NBlog.Web.Controllers
 {
-    public class Authentication
+    public partial class AuthenticationController
     {
         public class LoginModel : LayoutViewModel
         {
