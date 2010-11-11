@@ -6,11 +6,11 @@ using NBlog.Web.Application.Service.Entity;
 
 namespace NBlog.Web.Application.Service
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly ConfigService _configService;
+        private readonly IConfigService _configService;
 
-        public UserService(ConfigService configService)
+        public UserService(IConfigService configService)
         {
             _configService = configService;
             var identity = HttpContext.Current.User.Identity;

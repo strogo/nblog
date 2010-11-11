@@ -92,24 +92,30 @@
   <ItemGroup>
     <Compile Include="Application\AdminOnlyAttribute.cs" />
     <Compile Include="Application\Service\Entity\Config.cs" />
-    <Compile Include="Application\Service\Services.cs" />
+    <Compile Include="Application\Service\IConfigService.cs" />
+    <Compile Include="Application\Service\IEntryService.cs" />
+    <Compile Include="Application\Service\IServices.cs" />
+    <Compile Include="Application\Service\IUserService.cs" />
+    <Compile Include="Application\Service\Internal\Services.cs" />
     <Compile Include="Application\LayoutController.cs" />
     <Compile Include="Application\Service\Entity\Entry.cs" />
     <Compile Include="Application\Service\Entity\User.cs" />
-    <Compile Include="Application\Service\EntryService.cs" />
-    <Compile Include="Application\Service\UserService.cs" />
+    <Compile Include="Application\Service\Internal\EntryService.cs" />
+    <Compile Include="Application\Service\Internal\UserService.cs" />
     <Compile Include="Application\Html\SecurityExtensions.cs" />
-    <Compile Include="Application\Service\ConfigService.cs" />
+    <Compile Include="Application\Service\Internal\ConfigService.cs" />
     <Compile Include="Application\Storage\IRepository.cs" />
     <Compile Include="Application\Storage\Json\JsonRepository.cs" />
     <Compile Include="Application\StringExtensions.cs" />
+    <Compile Include="Application\SummaryModel.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\AuthenticationController.Models.cs" />
     <Compile Include="Controllers\EntryController.Models.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Application\LayoutViewModel.cs" />
+    <Compile Include="Application\LayoutModel.cs" />
+    <Compile Include="Controllers\KeyTitleModel.Models.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,9 +190,12 @@
     <Content Include="Views\Authentication\Login.aspx" />
     <Content Include="Views\Entry\Edit.aspx" />
     <Content Include="Views\Entry\Index.aspx" />
+    <Content Include="Views\Entry\List.aspx" />
     <Content Include="Views\Entry\Show.aspx" />
     <Content Include="Views\Home\Index.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -211,7 +220,9 @@
     <Content Include="Views\Shared\Layout.master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

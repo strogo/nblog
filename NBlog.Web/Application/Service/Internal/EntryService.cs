@@ -1,16 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using NBlog.Web.Application.Service.Entity;
 using NBlog.Web.Application.Storage.Json;
 using NBlog.Web.Application.Storage;
 
 namespace NBlog.Web.Application.Service
 {
-    public class EntryService
+    public class EntryService : IEntryService
     {
-        private readonly UserService _userService;
+        private readonly IUserService _userService;
         private readonly IRepository _repository;
 
-        public EntryService(UserService userService, IRepository repository)
+        public EntryService(IUserService userService, IRepository repository)
         {
             _userService = userService;
             _repository = repository;
@@ -26,6 +28,11 @@ namespace NBlog.Web.Application.Service
         public Entry GetBySlug(string slug)
         {
             return _repository.Single<Entry,string>(slug);
+        }
+
+        public List<Entry> GetList()
+        {
+            return _repository.All<Entry>().ToList();
         }
     }
 }

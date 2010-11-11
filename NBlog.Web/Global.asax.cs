@@ -48,14 +48,13 @@ namespace NBlog.Web
 
             builder.RegisterType<ExtensibleActionInvoker>().As<IActionInvoker>().HttpRequestScoped();
             builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker().HttpRequestScoped();
-
+          
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
-
-            builder.RegisterType<JsonRepository>().As<IRepository>().HttpRequestScoped().WithParameter("physicalPath", HttpContext.Current.Server.MapPath("~/App_Data/"));
-            builder.RegisterType<ConfigService>().HttpRequestScoped();
-            builder.RegisterType<EntryService>().HttpRequestScoped();
-            builder.RegisterType<UserService>().HttpRequestScoped();
-            builder.RegisterType<Services>().HttpRequestScoped();
+            builder.RegisterType<JsonRepository>().As<IRepository>().HttpRequestScoped().WithParameter("dataPath", HttpContext.Current.Server.MapPath("~/App_Data/"));
+            builder.RegisterType<ConfigService>().As<IConfigService>().HttpRequestScoped();
+            builder.RegisterType<EntryService>().As<IEntryService>().HttpRequestScoped();
+            builder.RegisterType<UserService>().As<IUserService>().HttpRequestScoped();
+            builder.RegisterType<Services>().As<IServices>().HttpRequestScoped();
 
             _containerProvider = new ContainerProvider(builder.Build());
 

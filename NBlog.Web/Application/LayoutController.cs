@@ -10,9 +10,9 @@ namespace NBlog.Web.Application
 {
     public class LayoutController : Controller
     {
-        protected readonly Services Services;
+        protected readonly IServices Services;
         
-        public LayoutController(Services services)
+        public LayoutController(IServices services)
         {
             Services = services;
         }
@@ -25,13 +25,13 @@ namespace NBlog.Web.Application
             if (viewResult == null) return;
 
             if (viewResult.ViewData.Model == null)
-                viewResult.ViewData.Model = new LayoutViewModel();
+                viewResult.ViewData.Model = new LayoutModel();
             
-            var model = (LayoutViewModel)viewResult.ViewData.Model;
+            var model = (LayoutModel)viewResult.ViewData.Model;
             InitialiseBaseViewModel(model);
         }
 
-        private void InitialiseBaseViewModel(LayoutViewModel model)
+        private void InitialiseBaseViewModel(LayoutModel model)
         {
             var formsIdentity = User.Identity as FormsIdentity;
             var friendlyName = formsIdentity != null ? formsIdentity.Ticket.UserData : User.Identity.Name;

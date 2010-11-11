@@ -9,6 +9,7 @@ namespace NBlog.Web.Application.Storage
     public interface IRepository
     {
         TEntity Single<TEntity, TKey>(TKey key);
-        void Add<TEntity>(TEntity item) where TEntity : class, new();
+        void Add<TEntity>(TEntity item);
+        IQueryable<TEntity> All<TEntity>();
     }
 }

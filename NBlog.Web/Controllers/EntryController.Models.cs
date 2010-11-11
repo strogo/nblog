@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NBlog.Web.Application;
 
 namespace NBlog.Web.Controllers
 {
@@ -10,6 +11,11 @@ namespace NBlog.Web.Controllers
         public class EditModel
         {
             
+        }
+
+        public class ListModel : LayoutModel
+        {
+            public IEnumerable<KeyTitleModel> Entries { get; set; }
         }
     }
 }

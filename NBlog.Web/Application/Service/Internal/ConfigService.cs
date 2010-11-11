@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace NBlog.Web.Application.Service
 {
-    public class ConfigService
+    public class ConfigService : IConfigService
     {
         private readonly IRepository _repository;
 

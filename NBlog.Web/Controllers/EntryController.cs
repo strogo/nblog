@@ -1,12 +1,15 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 using NBlog.Web.Application;
 using NBlog.Web.Application.Service;
+using NBlog.Web.Application.Service.Entity;
 
 namespace NBlog.Web.Controllers
 {
     public partial class EntryController : LayoutController
     {
-        public EntryController(Services services) : base(services) { }
+        public EntryController(IServices services) : base(services) { }
 
         [HttpGet]
         public ActionResult Show(string slug)
@@ -15,9 +18,16 @@ namespace NBlog.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult List()
+        public ViewResult List()
         {
-            return new EmptyResult();
+            var entries = Services.Entry.GetList();
+
+            var model = new ListModel
+            {
+                Entries = entries.Select(e => new KeyTitleModel(e.Slug, e.Title))
+            };
+
+            return View(model);
         }
 
         [AdminOnly]
@@ -33,6 +43,8 @@ namespace NBlog.Web.Controllers
             else
             {
                 var entry = Services.Entry.GetBySlug(slug);
+                // todo: now map to the entry EditModel, maybe use AutoMapper
+                return View();
             }
 
             return View();
