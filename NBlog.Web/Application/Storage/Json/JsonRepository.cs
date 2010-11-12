@@ -76,7 +76,7 @@ namespace NBlog.Web.Application.Storage.Json
             var folderPath = GetEntityPath<TEntity>();
             if (Directory.Exists(folderPath))
             {
-                Directory.Delete(folderPath);
+                Directory.Delete(folderPath, true);
             }
         }
 

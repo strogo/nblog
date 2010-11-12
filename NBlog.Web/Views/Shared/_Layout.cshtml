@@ -1,5 +1,4 @@
-<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<NBlog.Web.Application.LayoutModel>" %>
-<%@ Import Namespace="Microsoft.Security.Application" %>
+﻿@model NBlog.Web.Application.LayoutModel
 <!doctype html>
 <html lang="en" class="no-js">
 <head>
@@ -7,18 +6,18 @@
 	<!--[if IE]><![endif]-->
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Title | Site</title>
+	<title>@View.Title</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
-	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="apple-touch-icon" href="/resources/images/apple-touch-icon.png">
-	<link rel="stylesheet" href="/resources/css/style.css?v=1">
-	<link rel="stylesheet" media="handheld" href="/resources/css/handheld.css?v=1">
-	<link rel="stylesheet" media="screen" href="/resources/scripts/fancybox/jquery.fancybox-1.3.2.css" />
-	<link rel="stylesheet" media="screen" href="/resources/scripts/jQueryOpenIdPlugin/openid.css" />
+	<link rel="shortcut icon" href="@Url.Content("~/favicon.ico")">
+	<link rel="apple-touch-icon" href="@Url.Content("~/resources/images/apple-touch-icon.png")">
+	<link rel="stylesheet" href="@Url.Content("~/resources/css/style.css?v=1")">
+	<link rel="stylesheet" href="@Url.Content("~/resources/css/handheld.css?v=1")" media="handheld">
+	<link rel="stylesheet" href="@Url.Content("~/resources/scripts/fancybox/jquery.fancybox-1.3.2.css")" media="screen" />
+	<link rel="stylesheet" href="@Url.Content("~/resources/scripts/jQueryOpenIdPlugin/openid.css")" media="screen" />
 	
-	<script src="/resources/scripts/modernizr-1.5.min.js"></script>
+	<script src="@Url.Content("~/resources/scripts/modernizr-1.5.min.js")"></script>
 </head>
 <!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
 <!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
@@ -30,17 +29,17 @@
 	<header>
 		<div id="site">
 			<div id="site-name">
-				Test1
+				Chris Fulstow
 			</div>
-			<div id="tag-line">Test2</div>
+			<div id="tag-line">ASP.NET MVC Developer</div>
 		</div>
-		
+        
 		<div id="topbar">
 			<div id="links">
-				<%= Model.IsAuthenticated ? "<strong>" + Html.Safe(Model.FriendlyUsername) + "</strong> |" : "" %>
+                @(Model.IsAuthenticated ? Html.Safe("<strong>" + Model.FriendlyUsername + "</strong> |") : Html.Blank())
 				<a href="#">Projects</a> |
 				<a href="#">Contact</a> |
-				<%: Model.IsAuthenticated ? Html.ActionLink("Sign Out", "Logout", "Authentication") : Html.ActionLink("Sign In", "Login", "Authentication") %>
+				@(Model.IsAuthenticated ? Html.ActionLink("Sign Out", "Logout", "Authentication") : Html.ActionLink("Sign In", "Login", "Authentication"))
 			</div>
 			<div id="search">
 				<form>
@@ -50,7 +49,7 @@
 		</div>
 	</header>
 
-	<asp:ContentPlaceHolder id="MainContent" runat="server"/>
+	@RenderBody()
 	
 	<footer>
 
@@ -59,7 +58,7 @@
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-<script>!window.jQuery && document.write('<script src="/resources/scripts/jquery-1.4.3.min.js"><\/script>')</script>
+<script>    !window.jQuery && document.write('<script src="/resources/scripts/jquery-1.4.3.min.js"><\/script>')</script>
 <script src="/resources/scripts/plugins.js?v=1"></script>
 <script src="/resources/scripts/script.js?v=1"></script>
 <script src="/resources/scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
@@ -67,13 +66,13 @@
 <script src="/resources/scripts/jQueryOpenIdPlugin/jquery.openid.js"></script>
 
 <script>
-	$(function () {
-		// jQuery magic here
-	});
+    $(function () {
+        // jQuery magic here
+    });
 
 </script>
 
-<asp:ContentPlaceHolder id="Scripts" runat="server"/>
+@RenderSection("Scripts", required:false);
 
 <!--[if lt IE 7 ]>
 <script src="/resources/scripts/js/dd_belatedpng.js?v=1"></script>
@@ -83,11 +82,11 @@
 <script src="/resources/scripts/profiling/config.js?v=1"></script>
 
 <script>
-	var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
-	(function (d, t) {
-		var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-		g.async = true; g.src = '//www.google-analytics.com/ga.js'; s.parentNode.insertBefore(g, s);
-	})(document, 'script');
+    var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
+    (function (d, t) {
+        var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        g.async = true; g.src = '//www.google-analytics.com/ga.js'; s.parentNode.insertBefore(g, s);
+    })(document, 'script');
 </script>
   
 </body>

@@ -12,7 +12,7 @@ namespace NBlog.Web.Controllers
 {
     public class HomeController : LayoutController
     {
-        public HomeController(Services services) : base(services) { }
+        public HomeController(IServices services) : base(services) { }
 
         [HttpGet]
         public ActionResult Index()

@@ -9,7 +9,7 @@ namespace NBlog.Web.Application
 {
     public class AdminOnlyAttribute :  FilterAttribute, IAuthorizationFilter
     {
-        public Services Services { get; set; }
+        public IServices Services { get; set; }
 
         private readonly bool _authorize;
 

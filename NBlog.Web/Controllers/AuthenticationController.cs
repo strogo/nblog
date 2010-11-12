@@ -15,7 +15,7 @@ namespace NBlog.Web.Controllers
 {
     public partial class AuthenticationController : LayoutController
     {
-        public AuthenticationController(Services services) : base(services) { }
+        public AuthenticationController(IServices services) : base(services) { }
 
         [HttpGet]
         public ActionResult Login(string returnUrl)

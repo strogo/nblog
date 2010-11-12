@@ -17,6 +17,7 @@ namespace NBlog.Web.Controllers
             return View();
         }
 
+
         [HttpGet]
         public ViewResult List()
         {

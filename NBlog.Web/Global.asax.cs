@@ -42,6 +42,11 @@ namespace NBlog.Web
             routes.MapRoute("", "{slug}", new { controller = "Entry", action = "Show" });
         }
 
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+        {
+            filters.Add(new HandleErrorAttribute());
+        }
+
         protected void Application_Start()
         {
             var builder = new ContainerBuilder();
@@ -61,6 +66,7 @@ namespace NBlog.Web
             ControllerBuilder.Current.SetControllerFactory(new AutofacControllerFactory(this.ContainerProvider));
 
             AreaRegistration.RegisterAllAreas();
+            RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
     }

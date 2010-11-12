@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using Microsoft.Security.Application;
 
 namespace NBlog.Web.Application.Html
@@ -8,7 +9,7 @@ namespace NBlog.Web.Application.Html
         /// <summary>
         /// Sanitises HTML fragment for protection against XSS vulnerabilities
         /// </summary>
-        public static MvcHtmlString Safe(this HtmlHelper html, string unsafeHtml)
+        public static IHtmlString Safe(this HtmlHelper html, string unsafeHtml)
         {
             var safeHtml = Sanitizer.GetSafeHtmlFragment(unsafeHtml);
             return MvcHtmlString.Create(safeHtml);

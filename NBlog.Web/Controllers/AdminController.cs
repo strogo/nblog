@@ -10,7 +10,7 @@ namespace NBlog.Web.Controllers
 {
     public class AdminController : LayoutController
     {
-        public AdminController(Services services) : base(services) {}
+        public AdminController(IServices services) : base(services) {}
 
         [HttpGet]
         [AdminOnly]

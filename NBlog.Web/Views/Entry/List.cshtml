@@ -1,0 +1,11 @@
+﻿@model EntryController.ListModel
+
+<div id="main">
+    <h1>List entries</h1>
+
+    <ul>
+    @foreach (var entry in Model.Entries) {
+        <li>@entry.Title</li>
+    }
+    </ul>
+</div>
