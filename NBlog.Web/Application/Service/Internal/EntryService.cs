@@ -18,11 +18,11 @@ namespace NBlog.Web.Application.Service
             _repository = repository;
         }
 
-        public void Add(Entry entry)
+        public void Save(Entry entry)
         {
             entry.DateCreated = DateTime.Now;
             entry.Author = _userService.Current.FriendlyName;
-            _repository.Add(entry);
+            _repository.Save(entry);
         }
 
         public Entry GetBySlug(string slug)

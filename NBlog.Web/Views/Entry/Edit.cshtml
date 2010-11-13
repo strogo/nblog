@@ -1,3 +1,41 @@
-﻿<div id="main">
-    <h1>Edit Entry</h1>
+﻿@model EntryController.EditModel
+<div id="main">
+    <h1>Add/Edit Entry</h1>
+    
+    @using (Html.BeginForm()) {
+        
+        @Html.AntiForgeryToken()
+
+        @Html.LabelFor(m => m.Title)<br />
+        @Html.EditorFor(m => m.Title)
+        <br /><br />
+        
+        <div style="width:700px;">
+            @Html.LabelFor(m => m.Markdown)<br />
+            @Html.TextAreaFor(m => m.Markdown, new { style="width:100%; height:250px;" })
+        </div>
+        
+        <br />
+        <div>
+            <input type="submit" value="Save" />
+            @Html.ActionLink("< Back", "Index", "Home", null, new { @class="button" })
+        </div>
+        <br />
+        <br />
+    }
+
 </div>
+
+@section Scripts {
+<script>
+
+    $(function () {
+        $("textarea#Markdown").wmd({
+		    "preview": true,
+            "helpLink": "http://daringfireball.net/projects/markdown/",
+		    "helpHoverTitle": "Markdown Help",
+		});
+    });
+
+</script>
+}

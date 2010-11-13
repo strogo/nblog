@@ -59,7 +59,7 @@ namespace NBlog.Web.Application.Storage.Json
         }
 
 
-        public void Add<TEntity>(TEntity item)
+        public void Save<TEntity>(TEntity item)
         {
             var json = JsonConvert.SerializeObject(item, Formatting.Indented);
             var folderPath = Path.Combine(_dataPath, typeof(TEntity).Name);

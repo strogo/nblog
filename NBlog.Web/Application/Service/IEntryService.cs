@@ -5,7 +5,7 @@ namespace NBlog.Web.Application.Service
 {
     public interface IEntryService
     {
-        void Add(Entry entry);
+        void Save(Entry entry);
         Entry GetBySlug(string slug);
         List<Entry> GetList();
     }

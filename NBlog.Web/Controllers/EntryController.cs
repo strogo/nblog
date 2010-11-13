@@ -18,20 +18,7 @@ namespace NBlog.Web.Controllers
         }
 
 
-        [HttpGet]
-        public ViewResult List()
-        {
-            var entries = Services.Entry.GetList();
-
-            var model = new ListModel
-            {
-                Entries = entries.Select(e => new KeyTitleModel(e.Slug, e.Title))
-            };
-
-            return View(model);
-        }
-
-        [AdminOnly]
+        // [AdminOnly]
         [HttpGet]
         public ActionResult Edit([Bind(Prefix = "id")] string slug)
         {
@@ -39,27 +26,37 @@ namespace NBlog.Web.Controllers
 
             if (isCreatingNew)
             {
-                return View();
-            }
-            else
-            {
-                var entry = Services.Entry.GetBySlug(slug);
-                // todo: now map to the entry EditModel, maybe use AutoMapper
-                return View();
+                return View(new EditModel());
             }
 
-            return View();
+            var entry = Services.Entry.GetBySlug(slug);
+            var model = new EditModel { Title = entry.Title, Markdown = entry.Markdown };
+            return View(model);
         }
 
-        [AdminOnly]
+        // [AdminOnly]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Edit(EditModel model)
         {
-            // todo: this could be a different InputModel
-            // todo: input validation
+            // todo: validation, try new MVC3 unobtrusive? client side too
 
-            return View();
+            var isCreatingNew = string.IsNullOrWhiteSpace(model.Slug);
+
+            if (isCreatingNew)
+            {
+                var entry = new Entry { Title = model.Title, Markdown = model.Markdown };
+                Services.Entry.Save(entry);
+            }
+            else
+            {
+                var entry = Services.Entry.GetBySlug(model.Slug);
+                entry.Markdown = model.Markdown;
+                entry.Title = model.Title;
+                Services.Entry.Save(entry);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -117,6 +117,7 @@
     <Compile Include="Controllers\EntryController.Models.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Application\LayoutModel.cs" />
+    <Compile Include="Controllers\HomeController.Models.cs" />
     <Compile Include="Controllers\KeyTitleModel.Models.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +194,10 @@
     <None Include="Views\Entry\Edit.cshtml" />
     <None Include="Views\Entry\Show.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
+    <Content Include="Resources\Scripts\wmd\images\wmd-buttons.png" />
+    <Content Include="Resources\Scripts\wmd\jquery-wmd-plugin.js" />
+    <Content Include="Resources\Scripts\wmd\jquery.wmd.min.js" />
+    <Content Include="Resources\Scripts\wmd\wmd.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -217,7 +222,6 @@
     <None Include="App_Data\Config\site.json" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Entry\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

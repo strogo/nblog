@@ -8,14 +8,11 @@ namespace NBlog.Web.Controllers
 {
     public partial class EntryController
     {
-        public class EditModel
+        public class EditModel : LayoutModel
         {
-            
-        }
-
-        public class ListModel : LayoutModel
-        {
-            public IEnumerable<KeyTitleModel> Entries { get; set; }
+            public string Slug { get; set; }
+            public string Title { get; set; }
+            public string Markdown { get; set; }
         }
     }
 }

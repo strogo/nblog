@@ -75,8 +75,8 @@ namespace NBlog.Tests
             }));
 
             // act
-            var controller = new EntryController(services);
-            var model = controller.List().ViewData.Model as EntryController.ListModel;
+            var controller = new HomeController(services);
+            var model = controller.Index().ViewData.Model as HomeController.ListModel;
 
             // assert
             services.Entry.Received().GetList();

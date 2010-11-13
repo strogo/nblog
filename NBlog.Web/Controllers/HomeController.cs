@@ -10,14 +10,22 @@ using Newtonsoft.Json;
 
 namespace NBlog.Web.Controllers
 {
-    public class HomeController : LayoutController
+    public partial class HomeController : LayoutController
     {
         public HomeController(IServices services) : base(services) { }
 
         [HttpGet]
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            return View();
+            var entries = Services.Entry.GetList();
+
+            var model = new ListModel
+            {
+                Entries = entries.Select(e => new KeyTitleModel(e.Slug, e.Title))
+            };
+
+            return View(model);
+
         }
     }
 }

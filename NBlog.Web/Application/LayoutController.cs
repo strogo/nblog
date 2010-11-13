@@ -26,7 +26,10 @@ namespace NBlog.Web.Application
 
             if (viewResult.ViewData.Model == null)
                 viewResult.ViewData.Model = new LayoutModel();
-            
+
+            if (!(viewResult.ViewData.Model is LayoutModel))
+                throw new InvalidCastException("View model must derive from LayoutModel in action " + filterContext.ActionDescriptor.ActionName);
+
             var model = (LayoutModel)viewResult.ViewData.Model;
             InitialiseBaseViewModel(model);
         }

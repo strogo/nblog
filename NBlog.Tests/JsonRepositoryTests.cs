@@ -69,7 +69,7 @@ namespace NBlog.Tests
             var jsonRepository = new JsonRepository(TestContext.TestDir);
 
             // act
-            jsonRepository.Add(entry);
+            jsonRepository.Save(entry);
             var retrievedEntry = jsonRepository.Single<Entry>("top-10-c-tips");
 
             // assert
@@ -83,9 +83,9 @@ namespace NBlog.Tests
             // arrange
             var jsonRepository = new JsonRepository(TestContext.TestDir);
             jsonRepository.DeleteAll<Entry>();
-            jsonRepository.Add(new Entry { Title = "Entry 1" });
-            jsonRepository.Add(new Entry { Title = "Entry 2" });
-            jsonRepository.Add(new Entry { Title = "Entry 3" });
+            jsonRepository.Save(new Entry { Title = "Entry 1" });
+            jsonRepository.Save(new Entry { Title = "Entry 2" });
+            jsonRepository.Save(new Entry { Title = "Entry 3" });
 
             // act
             var all = jsonRepository.All<Entry>();
