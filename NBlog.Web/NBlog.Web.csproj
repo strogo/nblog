@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Application\AdminOnlyAttribute.cs" />
     <Compile Include="Application\Html\HtmlExtensions.cs" />
+    <Compile Include="Application\RouteExtensions.cs" />
     <Compile Include="Application\Service\Entity\Config.cs" />
     <Compile Include="Application\Service\IConfigService.cs" />
     <Compile Include="Application\Service\IEntryService.cs" />

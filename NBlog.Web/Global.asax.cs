@@ -27,19 +27,19 @@ namespace NBlog.Web
         {
             get { return _containerProvider; }
         }
-
+        
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             // homepage
-            routes.MapRoute("", "", new { controller = "Home", action = "Index" });
+            routes.MapRouteLowercase("", "", new { controller = "Home", action = "Index" });
 
             // general route
-            routes.MapRoute("", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
+            routes.MapRouteLowercase("", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
             
             // entry pages
-            routes.MapRoute("", "{slug}", new { controller = "Entry", action = "Show" });
+            routes.MapRouteLowercase("", "{slug}", new { controller = "Entry", action = "Show" });
         }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -68,6 +68,21 @@ namespace NBlog.Web
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            EnforceLowercaseUrl();
+        }
+
+        private void EnforceLowercaseUrl()
+        {
+            var path = Request.Url.AbsolutePath;
+            var verbIsGet = string.Equals(Request.HttpMethod, "GET", StringComparison.CurrentCultureIgnoreCase);
+
+            if (!verbIsGet || !path.Any(c => char.IsUpper(c))) return;
+
+            Response.RedirectPermanent(path.ToLowerInvariant() + Request.Url.Query);
         }
     }
 }
