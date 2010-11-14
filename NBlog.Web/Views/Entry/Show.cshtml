@@ -1,3 +1,14 @@
-﻿<div id="main">
+﻿@model EntryController.ShowModel
+
+<div id="main">
     <h1>Show Entry</h1>
+
+    @if (Model.IsAdmin)
+    {
+        @Html.ActionLink("Edit", "Edit", "Entry", new { id = Model.Slug }, null);
+    }
+    
+    <h2>@Model.Title</h2>
+
+    @Html.Safe(@Model.Html)
 </div>

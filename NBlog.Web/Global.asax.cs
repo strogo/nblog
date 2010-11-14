@@ -37,9 +37,9 @@ namespace NBlog.Web
 
             // general route
             routes.MapRouteLowercase("", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
-            
+
             // entry pages
-            routes.MapRouteLowercase("", "{slug}", new { controller = "Entry", action = "Show" });
+            routes.MapRouteLowercase("", "{id}", new { controller = "Entry", action = "Show" });
         }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)

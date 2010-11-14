@@ -14,5 +14,12 @@ namespace NBlog.Web.Controllers
             public string Title { get; set; }
             public string Markdown { get; set; }
         }
+
+        public class ShowModel : LayoutModel
+        {
+            public string Slug { get; set; }
+            public string Title { get; set; }
+            public string Html { get; set; }
+        }
     }
 }

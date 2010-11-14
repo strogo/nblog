@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using NBlog.Web.Application;
@@ -12,9 +13,24 @@ namespace NBlog.Web.Controllers
         public EntryController(IServices services) : base(services) { }
 
         [HttpGet]
-        public ActionResult Show(string slug)
+        public ActionResult Show([Bind(Prefix = "id")] string slug)
         {
-            return View();
+            if (string.IsNullOrWhiteSpace(slug))
+                throw new ArgumentNullException("slug");
+
+            var entry = Services.Entry.GetBySlug(slug);
+
+            var markdown = new MarkdownSharp.Markdown();
+            var html = markdown.Transform(entry.Markdown);
+
+            var model = new ShowModel
+            {
+                Slug = entry.Slug,
+                Title = entry.Title,
+                Html = html
+            };
+
+            return View(model);
         }
 
 
@@ -30,7 +46,7 @@ namespace NBlog.Web.Controllers
             }
 
             var entry = Services.Entry.GetBySlug(slug);
-            var model = new EditModel { Title = entry.Title, Markdown = entry.Markdown };
+            var model = new EditModel { Title = entry.Title, Markdown = entry.Markdown, Slug = slug };
             return View(model);
         }
 
@@ -42,6 +58,8 @@ namespace NBlog.Web.Controllers
             // todo: validation, try new MVC3 unobtrusive? client side too
 
             var isCreatingNew = string.IsNullOrWhiteSpace(model.Slug);
+
+            string redirectSlug;
 
             if (isCreatingNew)
             {
@@ -56,7 +74,7 @@ namespace NBlog.Web.Controllers
                 Services.Entry.Save(entry);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Show", "Entry", new { id = model.Slug });
         }
     }
 }

@@ -15,7 +15,11 @@
     
     <ul>
     @foreach (var entry in Model.Entries) {
-        <li>@entry.Title - @Html.ActionLink("Edit", "Edit", "Entry", new { id = entry.Key }, null)</li>
+        <li>
+            @entry.Title
+            - @Html.ActionLink("View", "Show", "Entry", new {id = entry.Key}, null)
+            - @Html.ActionLink("Edit", "Edit", "Entry", new { id = entry.Key }, null)
+        </li>
     }
     </ul>
 </div>

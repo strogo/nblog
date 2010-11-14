@@ -36,15 +36,11 @@ namespace NBlog.Web.Application
 
         private void InitialiseBaseViewModel(LayoutModel model)
         {
-            var formsIdentity = User.Identity as FormsIdentity;
-            var friendlyName = formsIdentity != null ? formsIdentity.Ticket.UserData : User.Identity.Name;
-            if (string.IsNullOrEmpty(friendlyName)) { friendlyName = User.Identity.Name; }
+            var currentUser = Services.User.Current;
 
-            // todo: use UserService
-            // _services.User.Current.FriendlyName;
-
-            model.FriendlyUsername = friendlyName;
-            model.IsAuthenticated = User.Identity.IsAuthenticated;
+            model.FriendlyUsername = currentUser.FriendlyName;
+            model.IsAuthenticated = currentUser.IsAuthenticated;
+            model.IsAdmin = currentUser.IsAdmin;
         }
     }
 }

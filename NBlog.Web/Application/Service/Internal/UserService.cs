@@ -13,6 +13,7 @@ namespace NBlog.Web.Application.Service
         public UserService(IConfigService configService)
         {
             _configService = configService;
+
             var identity = HttpContext.Current.User.Identity;
             var formsIdentity = identity as FormsIdentity;
             var friendlyName = formsIdentity != null ? formsIdentity.Ticket.UserData : identity.Name;
