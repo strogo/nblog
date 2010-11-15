@@ -1,5 +1,7 @@
 ﻿@model EntryController.ShowModel
-
+@{
+    View.Title = Model.Title;
+}
 <div id="main">
     <h1>Show Entry</h1>
 
@@ -7,7 +9,7 @@
     {
         @Html.ActionLink("Edit", "Edit", "Entry", new { id = Model.Slug }, null);
     }
-    
+
     <h2>@Model.Title</h2>
 
     @Html.Safe(@Model.Html)
