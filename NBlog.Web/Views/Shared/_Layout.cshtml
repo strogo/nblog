@@ -41,7 +41,7 @@
 			<div id="links" class="text-links">
                 @(Model.IsAuthenticated ? Html.Safe("<strong>" + Model.FriendlyUsername + "</strong> |") : Html.Blank())
                 @Html.ActionLink("Home", "Index", "Home") |
-				<a href="#">Projects</a> |
+                @Html.ActionLink("RSS", "Index", "Feed") |
 				<a href="#">Contact</a> |
 				@(Model.IsAuthenticated ? Html.ActionLink("Sign Out", "Logout", "Authentication") : Html.ActionLink("Sign In", "Login", "Authentication"))
 			</div>

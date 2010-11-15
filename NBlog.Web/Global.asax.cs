@@ -28,7 +28,7 @@ namespace NBlog.Web
         {
             get { return _containerProvider; }
         }
-        
+
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
@@ -36,11 +36,14 @@ namespace NBlog.Web
             // homepage
             routes.MapRouteLowercase("", "", new { controller = "Home", action = "Index" });
 
-            // general route
-            routes.MapRouteLowercase("", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
+            // feed
+            routes.MapRouteLowercase("", "feed", new { controller = "Feed", action = "Index" });
 
             // entry pages
             routes.MapRouteLowercase("", "{id}", new { controller = "Entry", action = "Show" });
+
+            // general route
+            routes.MapRouteLowercase("", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
         }
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -54,7 +57,7 @@ namespace NBlog.Web
 
             builder.RegisterType<ExtensibleActionInvoker>().As<IActionInvoker>().HttpRequestScoped();
             builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker().HttpRequestScoped();
-          
+
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
             builder.RegisterType<JsonRepository>().As<IRepository>().HttpRequestScoped().WithParameter("dataPath", HttpContext.Current.Server.MapPath("~/App_Data/"));
             builder.RegisterType<ConfigService>().As<IConfigService>().HttpRequestScoped();

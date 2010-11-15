@@ -65,6 +65,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -98,6 +99,7 @@
     <Compile Include="Application\AdminOnlyAttribute.cs" />
     <Compile Include="Application\Html\HtmlExtensions.cs" />
     <Compile Include="Application\RouteExtensions.cs" />
+    <Compile Include="Application\RssResult.cs" />
     <Compile Include="Application\Service\Entity\Config.cs" />
     <Compile Include="Application\Service\IConfigService.cs" />
     <Compile Include="Application\Service\IEntryService.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="Application\LayoutModel.cs" />
     <Compile Include="Controllers\HomeController.Models.cs" />
     <Compile Include="Controllers\KeyTitleModel.Models.cs" />
+    <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
