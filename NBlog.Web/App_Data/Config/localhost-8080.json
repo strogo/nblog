@@ -1,4 +1,7 @@
 ﻿{
+	"Site": "localhost-8080",
+	"Title": "Chris Fulstow",
+	"Tagline": "ASP.NET MVC Developer in Sydney",
 	"Admins":
 	[
 		"http://cxfx.myopenid.com/",

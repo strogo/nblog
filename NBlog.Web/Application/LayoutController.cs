@@ -37,10 +37,13 @@ namespace NBlog.Web.Application
         private void InitialiseBaseViewModel(LayoutModel model)
         {
             var currentUser = Services.User.Current;
+            var config = Services.Config.Current;
 
             model.FriendlyUsername = currentUser.FriendlyName;
             model.IsAuthenticated = currentUser.IsAuthenticated;
             model.IsAdmin = currentUser.IsAdmin;
+            model.SiteTagline = config.Tagline;
+            model.SiteTitle = config.Title;
         }
     }
 }

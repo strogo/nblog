@@ -1,4 +1,5 @@
-﻿using NBlog.Web.Application.Service.Entity;
+﻿using System.Web;
+using NBlog.Web.Application.Service.Entity;
 using NBlog.Web.Application.Storage;
 
 namespace NBlog.Web.Application.Service.Internal
@@ -10,7 +11,9 @@ namespace NBlog.Web.Application.Service.Internal
         public ConfigService(IRepository repository)
         {
             _repository = repository;
-            Current = _repository.Single<Config, string>("site");
+
+            var site = HttpContext.Current.Request.Url.Authority.ToUrlSlug();
+            Current = _repository.Single<Config, string>(site);
         }
 
         public Config Current { get; private set; }

@@ -6,8 +6,8 @@ namespace NBlog.Web.Application.Service.Entity
     public class Config
     {
         public string Site { get; set; }
-
-        [JsonProperty]
-        public List<string> Admins { get; private set; }
+        public string Title { get; set; }
+        public string Tagline { get; set; }
+        public List<string> Admins { get; set; }
     }
 }

@@ -124,7 +124,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Application\LayoutModel.cs" />
     <Compile Include="Controllers\HomeController.Models.cs" />
-    <Compile Include="Controllers\KeyTitleModel.Models.cs" />
     <Compile Include="Controllers\FeedController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -231,7 +230,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\Config\site.json" />
+    <None Include="App_Data\Config\localhost-8080.json" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using NBlog.Web.Application;
 
 namespace NBlog.Web.Controllers
@@ -16,6 +17,8 @@ namespace NBlog.Web.Controllers
             
             [Required]
             public string Title { get; set; }
+
+            [SkipRequestValidation]
             public string Markdown { get; set; }
         }
 
