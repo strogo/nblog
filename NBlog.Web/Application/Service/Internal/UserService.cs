@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Security;
 using NBlog.Web.Application.Service.Entity;
 
-namespace NBlog.Web.Application.Service
+namespace NBlog.Web.Application.Service.Internal
 {
     public class UserService : IUserService
     {

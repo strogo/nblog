@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using NBlog.Web.Application.Service.Entity;
-using NBlog.Web.Application.Storage.Json;
 using NBlog.Web.Application.Storage;
 
-namespace NBlog.Web.Application.Service
+namespace NBlog.Web.Application.Service.Internal
 {
     public class EntryService : IEntryService
     {
@@ -20,19 +19,39 @@ namespace NBlog.Web.Application.Service
 
         public void Save(Entry entry)
         {
-            entry.DateCreated = DateTime.Now;
+            if (string.IsNullOrWhiteSpace(entry.Slug))
+                throw new ArgumentNullException("entry", "Entry must have a Slug value to Save()");
+            
+            var creatingNew = _repository.Exists<Entry>(entry.Slug);
+
+            if (creatingNew)
+            {
+                var oldEntry = _repository.Single<Entry, string>(entry.Slug);
+                entry.DateCreated = oldEntry.DateCreated;
+            }
+            else
+            {
+                entry.DateCreated = DateTime.Now;
+            }
+
             entry.Author = _userService.Current.FriendlyName;
+
             _repository.Save(entry);
         }
 
         public Entry GetBySlug(string slug)
         {
-            return _repository.Single<Entry,string>(slug);
+            return _repository.Single<Entry, string>(slug);
         }
 
         public List<Entry> GetList()
         {
             return _repository.All<Entry>().ToList();
+        }
+
+        public void Delete(string slug)
+        {
+            _repository.Delete<Entry, string>(slug);
         }
     }
 }

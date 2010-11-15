@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Web;
-using NBlog.Web.Application.Service.Entity;
+﻿using NBlog.Web.Application.Service.Entity;
 using NBlog.Web.Application.Storage;
-using NBlog.Web.Application.Storage.Json;
-using Newtonsoft.Json;
 
-namespace NBlog.Web.Application.Service
+namespace NBlog.Web.Application.Service.Internal
 {
     public class ConfigService : IConfigService
     {

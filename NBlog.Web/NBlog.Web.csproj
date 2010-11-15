@@ -162,6 +162,10 @@
     <Content Include="Resources\Scripts\Fancybox\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Resources\Scripts\jquery-1.4.3.js" />
     <Content Include="Resources\Scripts\jquery-1.4.3.min.js" />
+    <Content Include="Resources\Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Resources\Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Resources\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Resources\Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\aolW.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\blogger.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\claimid.png" />

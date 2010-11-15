@@ -8,5 +8,6 @@ namespace NBlog.Web.Application.Service
         void Save(Entry entry);
         Entry GetBySlug(string slug);
         List<Entry> GetList();
+        void Delete(string slug);
     }
 }

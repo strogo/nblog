@@ -62,13 +62,25 @@ namespace NBlog.Web.Application.Storage.Json
         public void Save<TEntity>(TEntity item)
         {
             var json = JsonConvert.SerializeObject(item, Formatting.Indented);
-            var folderPath = Path.Combine(_dataPath, typeof(TEntity).Name);
+            var folderPath = GetEntityPath<TEntity>();
             if (!Directory.Exists(folderPath)) { Directory.CreateDirectory(folderPath); }
 
             var filename = GetKeyValue(item);
             var recordPath = Path.Combine(folderPath, filename + ".json");
 
             File.WriteAllText(recordPath, json);
+        }
+
+        public bool Exists<TEntity>(string key)
+        {
+            return Exists<TEntity, string>(key);
+        }
+
+        public bool Exists<TEntity, TKey>(TKey key)
+        {
+            var folderPath = GetEntityPath<TEntity>();
+            var recordPath = Path.Combine(folderPath, key + ".json");
+            return File.Exists(recordPath);
         }
 
         public void DeleteAll<TEntity>()
@@ -78,6 +90,13 @@ namespace NBlog.Web.Application.Storage.Json
             {
                 Directory.Delete(folderPath, true);
             }
+        }
+
+        public void Delete<TEntity, TKey>(TKey key)
+        {
+            var folderPath = GetEntityPath<TEntity>();
+            var recordPath = Path.Combine(folderPath, key + ".json");
+            File.Delete(recordPath);
         }
 
         private void RegisterKey<T>(Func<T, string> key)
@@ -91,6 +110,7 @@ namespace NBlog.Web.Application.Storage.Json
             return _keys[typeof(T)](item);
         }
 
+        // todo: need a TEntity + TKey version of this too that does Path.Combine(folderPath, key + ".json");
         private string GetEntityPath<TEntity>()
         {
             return Path.Combine(_dataPath, typeof(TEntity).Name);

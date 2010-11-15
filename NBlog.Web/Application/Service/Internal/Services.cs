@@ -1,4 +1,4 @@
-﻿namespace NBlog.Web.Application.Service
+﻿namespace NBlog.Web.Application.Service.Internal
 {
     public class Services : IServices
     {

@@ -34,7 +34,7 @@ namespace NBlog.Web.Controllers
         }
 
 
-        // [AdminOnly]
+        [AdminOnly]
         [HttpGet]
         public ActionResult Edit([Bind(Prefix = "id")] string slug)
         {
@@ -46,35 +46,59 @@ namespace NBlog.Web.Controllers
             }
 
             var entry = Services.Entry.GetBySlug(slug);
-            var model = new EditModel { Title = entry.Title, Markdown = entry.Markdown, Slug = slug };
+            
+            var model = new EditModel
+            {
+                Title = entry.Title, 
+                Markdown = entry.Markdown, 
+                Slug = slug,
+                NewSlug = slug
+            };
+
             return View(model);
         }
 
-        // [AdminOnly]
+        [AdminOnly]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Edit(EditModel model)
         {
-            // todo: validation, try new MVC3 unobtrusive? client side too
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
             var isCreatingNew = string.IsNullOrWhiteSpace(model.Slug);
-
-            string redirectSlug;
+            Entry entry = null;
 
             if (isCreatingNew)
             {
-                var entry = new Entry { Title = model.Title, Markdown = model.Markdown };
-                Services.Entry.Save(entry);
+                entry = new Entry
+                {
+                    Title = model.Title, 
+                    Markdown = model.Markdown, 
+                    Slug = model.Title.ToUrlSlug(),
+                    Author = Services.User.Current.FriendlyName,
+                    DateCreated = DateTime.Now
+                };
             }
             else
             {
-                var entry = Services.Entry.GetBySlug(model.Slug);
-                entry.Markdown = model.Markdown;
+                entry = Services.Entry.GetBySlug(model.Slug);
                 entry.Title = model.Title;
-                Services.Entry.Save(entry);
-            }
+                entry.Markdown = model.Markdown;
 
-            return RedirectToAction("Show", "Entry", new { id = model.Slug });
+                var slugChanged = !string.Equals(model.Slug, model.NewSlug, StringComparison.InvariantCultureIgnoreCase);
+                if (slugChanged)
+                {
+                    Services.Entry.Delete(model.Slug);
+                    entry.Slug = model.NewSlug;
+                }
+            }
+            
+            Services.Entry.Save(entry);
+
+            return RedirectToAction("Show", "Entry", new { id = entry.Slug });
         }
     }
 }

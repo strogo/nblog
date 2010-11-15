@@ -12,6 +12,7 @@ using Autofac.Integration.Web;
 using Autofac.Integration.Web.Mvc;
 using NBlog.Web.Application;
 using NBlog.Web.Application.Service;
+using NBlog.Web.Application.Service.Internal;
 using NBlog.Web.Application.Storage;
 using NBlog.Web.Application.Storage.Json;
 using Newtonsoft.Json;
@@ -68,6 +69,9 @@ namespace NBlog.Web
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            HtmlHelper.ClientValidationEnabled = true;
+            HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

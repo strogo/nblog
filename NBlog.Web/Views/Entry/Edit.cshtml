@@ -2,7 +2,12 @@
 <div id="main">
     <h1>Add/Edit Entry</h1>
     
-    @using (Html.BeginForm()) {
+    @{ Html.EnableClientValidation(false); }
+
+    @using (Html.BeginForm())
+    {
+    
+        @Html.ValidationSummary()
         
         @Html.AntiForgeryToken()
         
@@ -10,17 +15,25 @@
 
         @Html.LabelFor(m => m.Title)<br />
         @Html.EditorFor(m => m.Title)
+        @Html.ValidationMessageFor(m => m.Title)
+
         <br /><br />
         
+        @Html.LabelFor(m => m.NewSlug)<br />
+        @Html.EditorFor(m => m.NewSlug)
+        @Html.ValidationMessageFor(m => m.NewSlug)
+
+        <br /><br />
+                
         <div style="width:700px;">
             @Html.LabelFor(m => m.Markdown)<br />
-            @Html.TextAreaFor(m => m.Markdown, new { style="width:100%; height:250px;" })
+            @Html.TextAreaFor(m => m.Markdown, new { style = "width:100%; height:250px;" })
         </div>
         
         <br />
         <div>
             <input type="submit" value="Save" />
-            @Html.ActionLink("< Back", "Index", "Home", null, new { @class="button" })
+            @Html.ActionLink("< Back", "Index", "Home", null, new { @class = "button" })
         </div>
         <br />
         <br />
