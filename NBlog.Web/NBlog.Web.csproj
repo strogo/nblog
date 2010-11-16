@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\AdminOnlyAttribute.cs" />
+    <Compile Include="Application\DateExtensions.cs" />
     <Compile Include="Application\Html\HtmlExtensions.cs" />
     <Compile Include="Application\RouteExtensions.cs" />
     <Compile Include="Application\RssResult.cs" />
@@ -135,6 +136,7 @@
     <Content Include="Global.asax" />
     <Content Include="Resources\Css\Handheld.css" />
     <Content Include="Resources\Css\Style.css" />
+    <Content Include="Resources\Css\Themes\Default.css" />
     <Content Include="Resources\Css\Validation.css" />
     <Content Include="Resources\Scripts\dd_belatedpng.js" />
     <Content Include="Resources\Scripts\Fancybox\blank.gif" />
@@ -255,9 +257,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

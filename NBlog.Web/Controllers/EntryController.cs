@@ -25,6 +25,7 @@ namespace NBlog.Web.Controllers
 
             var model = new ShowModel
             {
+                Date = entry.DateCreated.ToString("dddd, dd MMMM yyyy"),
                 Slug = entry.Slug,
                 Title = entry.Title,
                 Html = html

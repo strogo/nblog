@@ -2,15 +2,25 @@
 @{
     View.Title = Model.Title;
 }
-<div id="main">
-    <h1>Show Entry</h1>
+<div class="crossbar">
+    Freelance web developer in Sydney, specialising in ASP.NET MVC, jQuery, C# and SQL Server - <a href="#">hire me for your project</a>
+</div>
 
+<article class="entry">
     @if (Model.IsAdmin)
     {
-        @Html.ActionLink("Edit", "Edit", "Entry", new { id = Model.Slug }, null);
+        <div class="entry-admin">
+            <text>Admin: </text>
+            @Html.ActionLink("Edit", "Edit", "Entry", new { id = Model.Slug }, null)
+        </div>
     }
-
-    <h2>@Model.Title</h2>
-
+    <h1>@Model.Title</h1>
+    
     @Html.Safe(@Model.Html)
-</div>
+
+    <div class="entry-date">
+        @Model.Date
+    </div>
+
+
+</article>

@@ -29,7 +29,7 @@ hr { display:block; height:1px; border:0; border-top:1px solid #ccc; margin:1em 
 body { font:13px sans-serif; *font-size:small; *font:x-small; line-height:1.22; }
 table { font-size:inherit; font:100%; }
 select, input, textarea { font:99% sans-serif; }
-pre, code, kbd, samp { font-family: monospace, sans-serif; }
+/*pre, code, kbd, samp { font-family: monospace, sans-serif; }*/
  
 body, select, input, textarea { color:#444; }
 h1,h2,h3,h4,h5,h6 { font-weight: bold; text-rendering: optimizeLegibility; }
@@ -75,52 +75,6 @@ button {  width: auto; overflow: visible; }
  /* Primary Styles
     Author: 
  */
-
-body
-{
-	font: 100%/1.5 'Segoe UI', Arial, sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6, #site-name, #tag-line
-{
-	line-height: 1.2;
-	font-family: 'Trebuchet MS', Arial, sans-serif;
-	color: #222;
-	font-weight: bold;
-}
-
-h1 { font-size: 150%; margin:  20px 0 35px 0; padding-bottom: 2px; border-bottom: 1px solid; clear: both; }
-h2 { font-size: 130%; }
-h3 { font-size: 140%; }
-h4 { font-size: 120%; }
-h5 { font-size: 100%; }
-h6 { font-size: 90%; }
-
-.text-links a { text-decoration:none; }
-.text-links a:link { border-bottom:1px dotted; color:#04b; }
-.text-links a:visited { border-bottom:1px dotted; color:#59d; }
-.text-links a:link:hover, .text-links a:visited:hover { border-bottom:1px solid; }
-
-.date
-{
-	font-size: 80%;
-	text-transform: uppercase;
-}
-
-.fixed-width, #main, header { width: 960px; margin: 0 auto; }
-
-#site-name, #tag-line { font-size: 140%; }
-#tag-line { color:#4a0; }
-
-#topbar { float: right; margin-top: 6px; }
-#topbar #links { text-align: right;  margin:  0 4px 7px 0; }
-
-#site { float: left; margin: 13px 0; }
-
-#search { clear: both; }
-#search .box { width: 300px; }
-
-#crossbar { background-color: #efefef; border-top : 1px solid #ccc; border-bottom: 1px solid #ccc; padding: 10px 0; clear: both; }
 
 
 /* 
