@@ -25,7 +25,12 @@ namespace NBlog.Web.Controllers
             };
 
             return View(model);
+        }
 
+        [HttpGet]
+        public ViewResult Throw()
+        {
+            throw new NotImplementedException("Example exception for testing error handling.");
         }
     }
 }

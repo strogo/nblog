@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using NBlog.Web.Application;
 using NBlog.Web.Application.Service;
@@ -18,7 +19,15 @@ namespace NBlog.Web.Controllers
             if (string.IsNullOrWhiteSpace(slug))
                 throw new ArgumentNullException("slug");
 
-            var entry = Services.Entry.GetBySlug(slug);
+            Entry entry;
+            try
+            {
+                entry = Services.Entry.GetBySlug(slug);
+            }
+            catch (Exception ex)
+            {
+                throw new HttpException(404, "Entry not found", ex);
+            }
 
             var markdown = new MarkdownSharp.Markdown();
             var html = markdown.Transform(entry.Markdown);
@@ -47,11 +56,11 @@ namespace NBlog.Web.Controllers
             }
 
             var entry = Services.Entry.GetBySlug(slug);
-            
+
             var model = new EditModel
             {
-                Title = entry.Title, 
-                Markdown = entry.Markdown, 
+                Title = entry.Title,
+                Markdown = entry.Markdown,
                 Slug = slug,
                 NewSlug = slug
             };
@@ -76,8 +85,8 @@ namespace NBlog.Web.Controllers
             {
                 entry = new Entry
                 {
-                    Title = model.Title, 
-                    Markdown = model.Markdown, 
+                    Title = model.Title,
+                    Markdown = model.Markdown,
                     Slug = model.Title.ToUrlSlug(),
                     Author = Services.User.Current.FriendlyName,
                     DateCreated = DateTime.Now
@@ -96,7 +105,7 @@ namespace NBlog.Web.Controllers
                     entry.Slug = model.NewSlug;
                 }
             }
-            
+
             Services.Entry.Save(entry);
 
             return RedirectToAction("Show", "Entry", new { id = entry.Slug });

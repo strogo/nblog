@@ -125,6 +125,8 @@
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\AuthenticationController.Models.cs" />
     <Compile Include="Controllers\EntryController.Models.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ErrorController.Models.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Application\LayoutModel.cs" />
     <Compile Include="Controllers\HomeController.Models.cs" />
@@ -249,6 +251,7 @@
     <Content Include="Resources\Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Resources\Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\Config\localhost-8080.json" />
