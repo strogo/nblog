@@ -2,15 +2,12 @@
 @{
     View.Title = Model.Title;
 }
-<div class="crossbar">
-    Freelance web developer in Sydney, specialising in ASP.NET MVC, jQuery, C# and SQL Server - <a href="#">hire me for your project</a>
-</div>
 
 <article class="entry">
     @if (Model.IsAdmin)
     {
-        <div class="entry-admin">
-            <text>Admin: </text>
+        <div class="admin-box">
+            Admin:
             @Html.ActionLink("Edit", "Edit", "Entry", new { id = Model.Slug }, null)
         </div>
     }

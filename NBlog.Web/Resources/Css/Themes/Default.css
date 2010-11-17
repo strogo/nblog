@@ -1,36 +1,29 @@
-﻿body
-{
-	font: 100%/1.5 'Segoe UI', Arial, sans-serif;
-	background-color:#efefef;
-}
+﻿
+body { font: 100%/1.5 'Segoe UI', Arial, sans-serif; background-color: #efefef; }
 
 h1, h2, h3, h4, h5, h6, #site-name, #tag-line
 {
 	line-height: 1.2;
 	font-family: 'Trebuchet MS', Arial, sans-serif;
-	color: #222;
+	color: #333;
 	font-weight: bold;
 }
 
-h1 { font-size: 150%; margin-bottom: 25px; padding-bottom: 2px; border-bottom: 1px solid; clear: both; color: #333; }
+h1 { font-size: 150%; margin-bottom: 25px; padding-bottom: 2px; border-bottom: 1px solid; clear: both; }
 h2 { font-size: 130%; }
 h3 { font-size: 140%; }
 h4 { font-size: 120%; }
 h5 { font-size: 100%; }
 h6 { font-size: 90%; }
 
-.text-links a { text-decoration:none; }
-.text-links a:link { border-bottom:1px dotted; color:#04b; }
-.text-links a:visited { border-bottom:1px dotted; color:#59d; }
-.text-links a:link:hover, .text-links a:visited:hover { border-bottom:1px solid; }
-
 #container
 {
-    width: 910px; margin: 0 auto; background-color: #fff;
-        box-shadow: 0 0 10px 4px #d5d5d5;
+    width: 910px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px 4px #d5d5d5;
     -moz-box-shadow: 0 0 10px 4px #d5d5d5;
     -webkit-box-shadow: 0 0 10px 4px #d5d5d5;
-
 }
 
 header
@@ -39,45 +32,50 @@ header
     padding: 0 25px;
 }
 
-#site-name, #tag-line { font-size: 140%; }
-#tag-line { color:#4a0; }
+
+#site { float: left; margin: 13px 0; background-color:transparent; }
+#site-name { font-size: 160%; }
+#tag-line { font-size: 120%; color:#4a0; }
 
 #topbar { float: right; margin-top: 6px; background-color:transparent; }
 #topbar #links { text-align: right;  margin:  0 4px 7px 0; }
-
-#site { float: left; margin: 13px 0; background-color:transparent; }
-
 #search { clear: both; }
 #search .box { width: 300px; }
 
-.crossbar  
+.crossbar
 {
-background-color: #efefef;
-background-image: -moz-linear-gradient(center top, #eeeeee 0%,#dddddd 100%);
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee),color-stop(1, #dddddd));
-border-top: 1px solid #bbb; border-bottom: 1px solid #bbb; padding: 10px 20px;
-
-box-shadow: 0 3px 10px 0px #e8e8e8;
--moz-box-shadow: 0 3px 10px 0px #e8e8e8;
--webkit-box-shadow: 0 3px 10px 0px #e8e8e8;
+    background-color: #efefef;
+    background-image: -moz-linear-gradient(center top, #eeeeee 0%,#dddddd 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee),color-stop(1, #dddddd));
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 3px 10px 0px #e8e8e8; -moz-box-shadow: 0 3px 10px 0px #e8e8e8; -webkit-box-shadow: 0 3px 10px 0px #e8e8e8;
 }
 
 article { padding: 25px; }
-
-footer { margin-top: 30px; margin-bottom: 30px; padding-top: 10px; padding-bottom: 10px; border-top: 1px dotted #999; text-align: center; }
-.entry-date { margin-bottom: 20px; font-style:italic; }
-
 article.entry li p { margin-bottom: 0; }
-
-pre.prettyprint code { font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif; }
-article.entry pre.prettyprint { font-size: 105%; border: 1px dotted #777; padding: 10px; background-color: #f8f8f8; margin-bottom: 10px; }
-
 article.entry p,
 article.entry pre.prettyprint,
 article.entry ol { margin-bottom: 15px; }
-article.entry .entry-admin  
+.entry-date { margin-bottom: 20px; margin-top: 20px; font-style:italic; }
+pre.prettyprint code { font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif; }
+article.entry pre.prettyprint { font-size: 105%; border: 1px dotted #777; padding: 10px; background-color: #f8f8f8; margin-bottom: 10px; }
+
+footer { margin-top: 30px; margin-bottom: 30px; padding-top: 10px; padding-bottom: 10px; border-top: 1px dotted #999; text-align: center; }
+
+.text-links a { text-decoration:none; }
+.text-links a:link { border-bottom:1px dotted; color:#04b; }
+.text-links a:visited { border-bottom:1px dotted; color:#59d; }
+.text-links a:link:hover, .text-links a:visited:hover { border-bottom:1px solid; }
+
+.admin-box
 {
-    font-weight: bold; padding: 5px 10px; margin-bottom: 15px; background-color: #FFFAD4;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    background-color: #FFFAD4;
     border: 1px solid #fcefa1;
     -moz-border-radius: 7px;
     webkit-border-radius: 7px;
