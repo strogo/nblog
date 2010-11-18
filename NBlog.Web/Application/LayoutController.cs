@@ -46,6 +46,7 @@ namespace NBlog.Web.Application
             model.Base.SiteTagline = config.Tagline;
             model.Base.SiteTitle = config.Title;
             model.Base.Crossbar = config.Crossbar;
+            model.Base.GoogleAnalyticsId = config.GoogleAnalyticsId;
         }
     }
 }

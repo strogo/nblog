@@ -7,5 +7,6 @@
 	"Admins":
 	[
 		"http://cxfx.myopenid.com/"
-	]
+	],
+	"GoogleAnalyticsId": ""
 }

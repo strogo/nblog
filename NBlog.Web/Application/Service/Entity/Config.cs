@@ -11,5 +11,6 @@ namespace NBlog.Web.Application.Service.Entity
         public string Tagline { get; set; }
         public string Crossbar { get; set; }
         public List<string> Admins { get; set; }
+        public string GoogleAnalyticsId { get; set; }
     }
 }

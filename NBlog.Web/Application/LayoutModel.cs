@@ -20,6 +20,7 @@ namespace NBlog.Web.Application
             public string SiteTitle { get; set; }
             public string SiteTagline { get; set; }
             public string Crossbar { get; set; }
+            public string GoogleAnalyticsId { get; set; }
         }
     }
 }
