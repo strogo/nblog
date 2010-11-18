@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
 using Autofac;
-using Autofac.Core;
 using Autofac.Integration.Web;
 using Autofac.Integration.Web.Mvc;
+using Elmah;
 using NBlog.Web.Application;
 using NBlog.Web.Application.Service;
 using NBlog.Web.Application.Service.Internal;
 using NBlog.Web.Application.Storage;
 using NBlog.Web.Application.Storage.Json;
-using NBlog.Web.Controllers;
-using Newtonsoft.Json;
-using System.IO;
 
 namespace NBlog.Web
 {
-    public class MvcApplication : HttpApplication, IContainerProviderAccessor
+    public class MvcApplication : HttpApplication, IContainerProviderAccessor, IRequestAuthorizationHandler
     {
         static IContainerProvider _containerProvider;
 
@@ -29,6 +24,7 @@ namespace NBlog.Web
         {
             get { return _containerProvider; }
         }
+
 
         public static void RegisterRoutes(RouteCollection routes)
         {
@@ -47,10 +43,12 @@ namespace NBlog.Web
             routes.MapRouteLowercase("", "{controller}/{action}/{id}", new { id = UrlParameter.Optional });
         }
 
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             // (none)
         }
+
 
         protected void Application_Start()
         {
@@ -101,6 +99,19 @@ namespace NBlog.Web
         }
 
 
+        // (Elmah.IRequestAuthorizationHandler.Authorize)
+        public bool Authorize(HttpContext context)
+        {
+            var userService = ContainerProvider.RequestLifetime.Resolve<IUserService>();
+            if (!userService.Current.IsAdmin)
+            {
+                throw new HttpException(403, "Forbidden");
+            }
+
+            return true;
+        }
+
+        
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
             EnforceLowercaseUrl();
