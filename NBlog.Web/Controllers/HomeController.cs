@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Autofac.Integration.Web;
 using NBlog.Web.Application;
 using NBlog.Web.Application.Service;
-using Newtonsoft.Json;
 
 namespace NBlog.Web.Controllers
 {
@@ -19,9 +17,17 @@ namespace NBlog.Web.Controllers
         {
             var entries = Services.Entry.GetList();
 
-            var model = new ListModel
+            var model = new IndexModel
             {
-                Entries = entries.Select(e => new KeyTitleModel(e.Slug, e.Title))
+                Entries = entries
+                    .OrderByDescending(e => e.DateCreated)
+                    .Select(e => new EntrySummaryModel
+                    {
+                        Key = e.Slug,
+                        Title = e.Title,
+                        Date = e.DateCreated.ToString("dddd, dd MMMM yyyy"),
+                        PrettyDate = e.DateCreated.ToPrettyDate()
+                    })
             };
 
             return View(model);

@@ -39,7 +39,7 @@ header
 
 #topbar { float: right; margin-top: 6px; background-color:transparent; }
 #topbar #links { text-align: right;  margin:  0 4px 7px 0; }
-#search { clear: both; }
+#search { clear: both; text-align:right; }
 #search .box { width: 300px; }
 
 .crossbar
@@ -56,9 +56,13 @@ header
 
 article { padding: 25px; }
 article.entry li p { margin-bottom: 0; }
+
 article.entry p,
 article.entry pre.prettyprint,
-article.entry ol { margin-bottom: 15px; }
+article.entry ol,
+article.entry ul
+{ margin-bottom: 15px; }
+
 .entry-date { margin-bottom: 20px; margin-top: 20px; font-style:italic; }
 pre.prettyprint code { font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif; }
 article.entry pre.prettyprint { font-size: 105%; border: 1px dotted #777; padding: 10px; background-color: #f8f8f8; margin-bottom: 10px; }
@@ -77,7 +81,23 @@ footer { margin-top: 30px; margin-bottom: 30px; padding-top: 10px; padding-botto
     margin-bottom: 15px;
     background-color: #FFFAD4;
     border: 1px solid #fcefa1;
-    -moz-border-radius: 7px;
-    webkit-border-radius: 7px;
-    border-radius: 7px;
 }
+
+ul.entry-list { margin: 0; }
+ul.entry-list li
+{
+    list-style-type: none;
+    margin: 20px;
+    /*
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    background-image: -moz-linear-gradient(center top, #f8f8f8 0%,#f0f0f0 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #eeeeee),color-stop(1, #dddddd));
+    -moz-border-radius: 9px;
+    webkit-border-radius: 9px;
+    border-radius: 9px;
+    box-shadow: 0 3px 10px 0px #e8e8e8; -moz-box-shadow: 3px 3px 7px 0px #e8e8e8; -webkit-box-shadow: 0 3px 10px 0px #e8e8e8;
+    */
+}
+
+ul.entry-list li .date { font-size: 100%; }

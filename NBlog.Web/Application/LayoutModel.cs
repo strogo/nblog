@@ -9,5 +9,6 @@ namespace NBlog.Web.Application
         public string FriendlyUsername { get; set; }
         public string SiteTitle { get; set; }
         public string SiteTagline { get; set; }
+        public string Crossbar { get; set; }
     }
 }

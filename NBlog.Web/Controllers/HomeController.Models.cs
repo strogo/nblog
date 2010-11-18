@@ -8,21 +8,17 @@ namespace NBlog.Web.Controllers
 {
     public partial class HomeController
     {
-        public class ListModel : LayoutModel
+        public class IndexModel : LayoutModel
         {
-            public IEnumerable<KeyTitleModel> Entries { get; set; }
+            public IEnumerable<EntrySummaryModel> Entries { get; set; }
         }
 
-        public class KeyTitleModel
+        public class EntrySummaryModel
         {
-            public KeyTitleModel(string key, string title)
-            {
-                Key = key;
-                Title = title;
-            }
-
-            public string Key { get; private set; }
-            public string Title { get; private set; }
+            public string Key { get; set; }
+            public string Title { get; set; }
+            public string Date{ get; set; }
+            public string PrettyDate { get; set; }
         }
     }
 }

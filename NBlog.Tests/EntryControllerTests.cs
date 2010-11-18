@@ -18,6 +18,11 @@ namespace NBlog.Tests
     {
         public EntryControllerTests()
         {
+            var a = 100;
+            var b = "yeah";
+            var str = new List<Object>();
+
+
             //
             // TODO: Add constructor logic here
             //
@@ -76,7 +81,7 @@ namespace NBlog.Tests
 
             // act
             var controller = new HomeController(services);
-            var model = controller.Index().ViewData.Model as HomeController.ListModel;
+            var model = controller.Index().ViewData.Model as HomeController.IndexModel;
 
             // assert
             services.Entry.Received().GetList();

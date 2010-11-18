@@ -1,7 +1,4 @@
-﻿@model HomeController.ListModel
-@{
-    View.Title = "Chris Fulstow - ASP.NET Developer";
-}    
+﻿@model HomeController.IndexModel
 <article>
 
     @if (Model.IsAdmin)
@@ -14,13 +11,12 @@
 
     <h1>Latest Posts</h1>
         
-    <ul>
+    <ul class="entry-list">
     @foreach (var entry in Model.Entries)
     {
         <li>
-            @entry.Title
-            - @Html.ActionLink("View", "Show", "Entry", new { id = entry.Key }, null)
-            - @Html.ActionLink("Edit", "Edit", "Entry", new { id = entry.Key }, null)
+            @Html.ActionLink(entry.Title, "Show", "Entry", new { id = entry.Key }, null)
+            <div class="date">@entry.Date</div>
         </li>
     }
     </ul>

@@ -44,6 +44,7 @@ namespace NBlog.Web.Application
             model.IsAdmin = currentUser.IsAdmin;
             model.SiteTagline = config.Tagline;
             model.SiteTitle = config.Title;
+            model.Crossbar = config.Crossbar;
         }
     }
 }

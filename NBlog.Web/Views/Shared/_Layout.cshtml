@@ -6,7 +6,7 @@
 	<!--[if IE]><![endif]-->
 
 	@*<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">*@
-	<title>@View.Title</title>
+	<title>@(View.Title ?? Model.SiteTitle)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
@@ -44,7 +44,6 @@
 		<div id="topbar">
 			<div id="links" class="text-links">
                 @(Model.IsAuthenticated ? Html.Safe("<strong>" + Model.FriendlyUsername + "</strong> |") : Html.Blank())
-                @Html.ActionLink("Home", "Index", "Home") |
 				<a href="#">Portfolio</a> |
                 @Html.ActionLink("RSS", "Index", "Feed") |
 				<a href="#">Contact</a> |
@@ -66,14 +65,14 @@
         }
         else
         {
-            <text>Freelance web developer in Sydney, specialising in ASP.NET MVC, jQuery, C# and SQL Server - <a href="#">hire me for your project</a></text>
+            @Html.Raw(Model.Crossbar)
         }
             </div>
 	    @RenderBody()
     </div>	
 
 	<footer>
-    Powered by @Html.ActionLink("NBlog", "Show", "Entry", new {id="nblog"}, null)
+        Powered by <a href="http://nblog.codeplex.com/">NBlog</a>
 	</footer>
 </div>
 

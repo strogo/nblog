@@ -1,10 +1,10 @@
 ﻿{
 	"Site": "localhost-8080",
-	"Title": "Chris Fulstow",
-	"Tagline": "Social Media Web Development & Strategy",
+	"Title": "NBlog",
+	"Tagline": "An experimental ASP.NET MVC 3.0 blog platform",
+	"Crossbar": "ASP.NET MVC 3.0, Razor, JSON.NET, Markdown, Autofac, AntiXSS, HTML5 & CSS3, OpenID, NSubstitute, ELMAH",
 	"Admins":
 	[
-		"http://cxfx.myopenid.com/",
-		"https://www.google.com/accounts/o8/id?id=AItOawmqbAx7UhoXj45lu_IFM01f7aFGbyDvaQ8"
+		"http://cxfx.myopenid.com/"
 	]
 }
