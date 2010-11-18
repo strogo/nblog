@@ -39,12 +39,13 @@ namespace NBlog.Web.Application
             var currentUser = Services.User.Current;
             var config = Services.Config.Current;
 
-            model.FriendlyUsername = currentUser.FriendlyName;
-            model.IsAuthenticated = currentUser.IsAuthenticated;
-            model.IsAdmin = currentUser.IsAdmin;
-            model.SiteTagline = config.Tagline;
-            model.SiteTitle = config.Title;
-            model.Crossbar = config.Crossbar;
+            model.Base.FriendlyUsername = currentUser.FriendlyName;
+            model.Base.IsAuthenticated = currentUser.IsAuthenticated;
+            model.Base.IsAdmin = currentUser.IsAdmin;
+            model.Base.Theme = config.Theme;
+            model.Base.SiteTagline = config.Tagline;
+            model.Base.SiteTitle = config.Title;
+            model.Base.Crossbar = config.Crossbar;
         }
     }
 }

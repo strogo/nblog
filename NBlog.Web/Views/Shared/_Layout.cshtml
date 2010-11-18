@@ -6,14 +6,14 @@
 	<!--[if IE]><![endif]-->
 
 	@*<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">*@
-	<title>@(View.Title ?? Model.SiteTitle)</title>
+	<title>@(View.Title ?? Model.Base.SiteTitle)</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
 	<link rel="shortcut icon" href="@Url.Content("~/favicon.ico")">
 	<link rel="apple-touch-icon" href="@Url.Content("~/resources/images/apple-touch-icon.png")">
 	<link rel="stylesheet" href="@Url.Content("~/resources/css/style.css?v=1")">
-	<link rel="stylesheet" href="@Url.Content("~/resources/css/themes/default.css?v=1")">
+	<link rel="stylesheet" href="@Url.Content("~/resources/css/themes/" + Model.Base.Theme + ".css?v=1")">
 	<link rel="stylesheet" href="@Url.Content("~/resources/css/handheld.css?v=1")" media="handheld">
 	<link rel="stylesheet" href="@Url.Content("~/resources/scripts/fancybox/jquery.fancybox-1.3.2.css")" media="screen">
 	<link rel="stylesheet" href="@Url.Content("~/resources/scripts/jQueryOpenIdPlugin/openid.css")" media="screen">
@@ -35,19 +35,19 @@
 		<div id="site">
             <a href="@Url.Action("Index", "Home")">
 			    <div id="site-name">
-				    @Model.SiteTitle
+				    @Model.Base.SiteTitle
 			    </div>
-			    <div id="tag-line">@Model.SiteTagline</div>
+			    <div id="tag-line">@Model.Base.SiteTagline</div>
             </a>
 		</div>
 
 		<div id="topbar">
 			<div id="links" class="text-links">
-                @(Model.IsAuthenticated ? Html.Safe("<strong>" + Model.FriendlyUsername + "</strong> |") : Html.Blank())
+                @(Model.Base.IsAuthenticated ? Html.Safe("<strong>" + Model.Base.FriendlyUsername + "</strong> |") : Html.Blank())
 				<a href="#">Portfolio</a> |
                 @Html.ActionLink("RSS", "Index", "Feed") |
 				<a href="#">Contact</a> |
-				@(Model.IsAuthenticated ? Html.ActionLink("Sign Out", "Logout", "Authentication") : Html.ActionLink("Sign In", "Login", "Authentication"))
+				@(Model.Base.IsAuthenticated ? Html.ActionLink("Sign Out", "Logout", "Authentication") : Html.ActionLink("Sign In", "Login", "Authentication"))
 			</div>
 			<div id="search">
 				<form>
@@ -65,7 +65,7 @@
         }
         else
         {
-            @Html.Raw(Model.Crossbar)
+            @Html.Raw(Model.Base.Crossbar)
         }
             </div>
 	    @RenderBody()

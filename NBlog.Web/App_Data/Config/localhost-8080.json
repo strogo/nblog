@@ -1,5 +1,6 @@
 ﻿{
 	"Site": "localhost-8080",
+	"Theme": "Default",
 	"Title": "NBlog",
 	"Tagline": "An experimental ASP.NET MVC 3.0 blog platform",
 	"Crossbar": "ASP.NET MVC 3.0, Razor, JSON.NET, Markdown, Autofac, AntiXSS, HTML5 & CSS3, OpenID, NSubstitute, ELMAH",
