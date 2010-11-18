@@ -54,15 +54,15 @@ namespace NBlog.Web
         {
             var builder = new ContainerBuilder();
 
-            builder.RegisterType<ExtensibleActionInvoker>().As<IActionInvoker>().HttpRequestScoped();
-            builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker().HttpRequestScoped();
+            builder.RegisterType<ExtensibleActionInvoker>().As<IActionInvoker>().InstancePerHttpRequest();
+            builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker().InstancePerHttpRequest();
 
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
-            builder.RegisterType<JsonRepository>().As<IRepository>().HttpRequestScoped().WithParameter("dataPath", HttpContext.Current.Server.MapPath("~/App_Data/"));
-            builder.RegisterType<ConfigService>().As<IConfigService>().HttpRequestScoped();
-            builder.RegisterType<EntryService>().As<IEntryService>().HttpRequestScoped();
-            builder.RegisterType<UserService>().As<IUserService>().HttpRequestScoped();
-            builder.RegisterType<Services>().As<IServices>().HttpRequestScoped();
+            builder.RegisterType<JsonRepository>().As<IRepository>().InstancePerHttpRequest().WithParameter("dataPath", HttpContext.Current.Server.MapPath("~/App_Data/"));
+            builder.RegisterType<ConfigService>().As<IConfigService>().InstancePerHttpRequest();
+            builder.RegisterType<EntryService>().As<IEntryService>().InstancePerHttpRequest();
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerHttpRequest();
+            builder.RegisterType<Services>().As<IServices>().InstancePerHttpRequest();
 
             _containerProvider = new ContainerProvider(builder.Build());
 
