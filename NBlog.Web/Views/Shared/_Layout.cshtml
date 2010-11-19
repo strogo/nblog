@@ -51,7 +51,7 @@
 			</div>
 			<div id="search">
 				<form action="@Url.Action("Index", "Search")">
-					<input type="text" class="box" name="q" value="search" />
+					<input type="text" class="box" name="q" />
 				</form>
 			</div>
 		</div>
@@ -89,11 +89,13 @@
 <script src="/resources/scripts/jquery.validate.js"></script>
 <script src="/resources/scripts/jquery.validate.unobtrusive.js"></script>
 <script src="/resources/scripts/prettify/prettify.js"></script>
+<script src="/resources/scripts/jquery.watermark.js"></script>
 
 @RenderSection("Scripts", required:false)
 
 <script>
     $(function () {
+        $("#search .box").watermark("search");
         $("input:submit, input:button, a.button, button").button();
         var a = $("pre:has(code)").addClass("prettyprint");
         prettyPrint();

@@ -127,7 +127,6 @@
     <Compile Include="Application\Storage\IRepository.cs" />
     <Compile Include="Application\Storage\Json\JsonRepository.cs" />
     <Compile Include="Application\StringExtensions.cs" />
-    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\SearchController.Models.cs" />
     <Compile Include="Controllers\EntryController.cs" />
@@ -184,6 +183,7 @@
     <Content Include="Resources\Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Resources\Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Resources\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Resources\Scripts\jquery.watermark.js" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\aolW.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\blogger.png" />
     <Content Include="Resources\Scripts\jQueryOpenIdPlugin\images\claimid.png" />
@@ -231,7 +231,6 @@
     <Content Include="Resources\Scripts\Profiling\yahoo-profiling.css" />
     <Content Include="Resources\Scripts\Profiling\yahoo-profiling.min.js" />
     <Content Include="Resources\Scripts\script.js" />
-    <None Include="Views\Admin\Index.cshtml" />
     <None Include="Views\Authentication\Login.cshtml" />
     <None Include="Views\Entry\Edit.cshtml" />
     <None Include="Views\Entry\Show.cshtml" />

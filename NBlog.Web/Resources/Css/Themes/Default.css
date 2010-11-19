@@ -91,3 +91,5 @@ ul.entry-list li
 }
 
 ul.entry-list li .date { font-size: 100%; }
+
+.watermark { color: #999; }
