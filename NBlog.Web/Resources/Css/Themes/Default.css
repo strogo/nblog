@@ -113,3 +113,6 @@ a.button {color:}
 }
 
 .field-validation-error{ display:block; color: #aa0000; border: 1px dotted #aa0000; background-color: #ffdddd; width: 800px; margin: 15px 0; }
+
+::-moz-selection{ background: #FFFF55; color:#333; text-shadow: none; }
+::selection { background: #FFFF55; color:#333; text-shadow: none; } 

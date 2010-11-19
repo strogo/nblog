@@ -13,7 +13,9 @@
         @Html.AntiForgeryToken()
         
         @Html.HiddenFor(m => m.Slug)
-
+        
+        <input type="hidden" name="Base.SiteTitle" value="l33t!" />
+        
         <div class="field">
             @Html.LabelFor(m => m.Title)<br />
             @Html.EditorFor(m => m.Title)

@@ -1,15 +1,9 @@
-﻿using System.Web.Mvc;
-using System.Web;
-namespace NBlog.Web.Application
+﻿namespace NBlog.Web.Application
 {
     public class LayoutModel
     {
-        public LayoutBaseModel Base { get; private set; }
-
-        public LayoutModel()
-        {
-            Base = new LayoutBaseModel();
-        }
+        [NoBinding]
+        public LayoutBaseModel Base { get; set; }
 
         public class LayoutBaseModel
         {

@@ -35,7 +35,7 @@ namespace NBlog.Web.Controllers
                 case 500:
                 default:
                     Response.StatusCode = 500;
-                    model.Heading = "Boom!";
+                    model.Heading = "Error";
                     model.Message = "Sorry, something went wrong.  It's been logged.";
                     break;
             }

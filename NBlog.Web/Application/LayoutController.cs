@@ -38,7 +38,8 @@ namespace NBlog.Web.Application
         {
             var currentUser = Services.User.Current;
             var config = Services.Config.Current;
-
+            
+            model.Base = new LayoutModel.LayoutBaseModel();
             model.Base.FriendlyUsername = currentUser.FriendlyName;
             model.Base.IsAuthenticated = currentUser.IsAuthenticated;
             model.Base.IsAdmin = currentUser.IsAdmin;

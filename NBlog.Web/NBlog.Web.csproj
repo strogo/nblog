@@ -111,6 +111,7 @@
     <Compile Include="Application\AdminOnlyAttribute.cs" />
     <Compile Include="Application\DateExtensions.cs" />
     <Compile Include="Application\Html\HtmlExtensions.cs" />
+    <Compile Include="Application\NoBindingAttribute.cs" />
     <Compile Include="Application\RouteExtensions.cs" />
     <Compile Include="Application\RssResult.cs" />
     <Compile Include="Application\Service\Entity\Config.cs" />
