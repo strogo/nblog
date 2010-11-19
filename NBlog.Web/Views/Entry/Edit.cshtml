@@ -8,12 +8,8 @@
 
     <h1>@Heading</h1>
     
-    @{ Html.EnableClientValidation(false); }
-
     @using (Html.BeginForm())
     {
-        @Html.ValidationSummary()
-        
         @Html.AntiForgeryToken()
         
         @Html.HiddenFor(m => m.Slug)
@@ -35,6 +31,7 @@
         
         <div class="field markdown">
             @Html.TextAreaFor(m => m.Markdown, new { @class = "text-box" })
+            @Html.ValidationMessageFor(m => m.Markdown)
         </div>
         
         <div class="field">

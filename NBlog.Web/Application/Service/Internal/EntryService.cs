@@ -21,7 +21,9 @@ namespace NBlog.Web.Application.Service.Internal
         {
             if (string.IsNullOrWhiteSpace(entry.Slug))
                 throw new ArgumentNullException("entry", "Entry must have a Slug value to Save()");
-            
+
+            entry.Slug = entry.Slug.ToLowerInvariant();
+
             var creatingNew = _repository.Exists<Entry>(entry.Slug);
 
             if (creatingNew)

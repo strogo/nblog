@@ -73,12 +73,19 @@ namespace NBlog.Web.Controllers
         [HttpPost]
         public ActionResult Edit(EditModel model)
         {
+            var isCreatingNew = string.IsNullOrWhiteSpace(model.Slug);
+            
+            if (isCreatingNew)
+            {
+                // field is hidden when created a new entry, so don't validate it
+                ModelState["NewSlug"].Errors.Clear();
+            }
+
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
-
-            var isCreatingNew = string.IsNullOrWhiteSpace(model.Slug);
+            
             Entry entry = null;
 
             if (isCreatingNew)
@@ -98,7 +105,10 @@ namespace NBlog.Web.Controllers
                 entry.Title = model.Title;
                 entry.Markdown = model.Markdown;
 
-                var slugChanged = !string.Equals(model.Slug, model.NewSlug, StringComparison.InvariantCultureIgnoreCase);
+                var slugChanged =
+                    !string.Equals(model.Slug, model.NewSlug, StringComparison.InvariantCultureIgnoreCase)
+                    && !string.IsNullOrWhiteSpace(model.NewSlug);
+
                 if (slugChanged)
                 {
                     Services.Entry.Delete(model.Slug);

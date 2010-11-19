@@ -98,7 +98,7 @@ ul.entry-list li .date { font-size: 100%; }
 .form input#Title { font-size: 140%; width: 800px; }
 .form input#NewSlug { width: 800px; }
 
-.form .text-box, .form textarea, .form .wmd-preview { border: 1px solid #bbb; padding: 5px 7px; }
+.form .text-box, .form textarea, .form .wmd-preview, .field-validation-error { border: 1px solid #bbb; padding: 5px 7px; }
 .form .text-box, .form .markdown, .form .wmd-preview { width: 800px; }
 .form .markdown textarea {height: 350px;}
 .form .wmd-preview{ background-color:#eee; }
@@ -111,3 +111,5 @@ a.button {color:}
 {
     margin-bottom: 25px;
 }
+
+.field-validation-error{ display:block; color: #aa0000; border: 1px dotted #aa0000; background-color: #ffdddd; width: 800px; margin: 15px 0; }
