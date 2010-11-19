@@ -44,9 +44,7 @@
 		<div id="topbar">
 			<div id="links" class="text-links">
                 @(Model.Base.IsAuthenticated ? Html.Safe("<strong>" + Model.Base.FriendlyUsername + "</strong> |") : Html.Blank())
-				<a href="#">Portfolio</a> |
                 @Html.ActionLink("RSS", "Index", "Feed") |
-				<a href="#">Contact</a> |
 				@(Model.Base.IsAuthenticated ? Html.ActionLink("Sign Out", "Logout", "Authentication") : Html.ActionLink("Sign In", "Login", "Authentication"))
 			</div>
 			<div id="search">
@@ -57,7 +55,7 @@
 		</div>
 	</header>
     
-    <div id="main" class="text-links">
+    <div id="main">
             <div class="crossbar">
         @if (IsSectionDefined("Crossbar"))
         {
@@ -71,7 +69,7 @@
 	    @RenderBody()
     </div>	
 
-	<footer>
+	<footer class="text-links">
         Powered by <a href="http://nblog.codeplex.com/">NBlog</a>
 	</footer>
 </div>

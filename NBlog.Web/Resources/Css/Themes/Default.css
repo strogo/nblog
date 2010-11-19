@@ -58,6 +58,7 @@ article { padding: 25px; }
 article.entry li p { margin-bottom: 0; }
 
 article.entry p,
+.wmd-preview p,
 article.entry pre.prettyprint,
 article.entry ol,
 article.entry ul
@@ -93,3 +94,20 @@ ul.entry-list li
 ul.entry-list li .date { font-size: 100%; }
 
 .watermark { color: #999; }
+
+.form input#Title { font-size: 140%; width: 800px; }
+.form input#NewSlug { width: 800px; }
+
+.form .text-box, .form textarea, .form .wmd-preview { border: 1px solid #bbb; padding: 5px 7px; }
+.form .text-box, .form .markdown, .form .wmd-preview { width: 800px; }
+.form .markdown textarea {height: 350px;}
+.form .wmd-preview{ background-color:#eee; }
+
+.form label {font-weight:bold; margin-bottom:15px;}
+
+a.button {color:}
+
+.form .field 
+{
+    margin-bottom: 25px;
+}

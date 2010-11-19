@@ -45,7 +45,7 @@ td, td img { vertical-align:top; }
 sub { vertical-align: sub; font-size: smaller; }
 sup { vertical-align: super; font-size: smaller; }
 
-pre { padding: 15px; white-space: pre; white-space: pre-wrap; white-space: pre-line; word-wrap: break-word; }
+pre { padding: 15px; /*white-space: pre; white-space: pre-wrap; white-space: pre-line; */ word-wrap: break-word; }
 
 input[type="radio"] { vertical-align: text-bottom; }
 input[type="checkbox"] { vertical-align: bottom; *vertical-align: baseline; }

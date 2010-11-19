@@ -6,14 +6,16 @@
 <article class="entry">
     @if (Model.Base.IsAdmin)
     {
-        <div class="admin-box">
+        <div class="admin-box text-links">
             Admin:
             @Html.ActionLink("Edit", "Edit", "Entry", new { id = Model.Slug }, null)
         </div>
     }
     <h1>@Model.Title</h1>
     
-    @Html.Safe(@Model.Html)
+    <div class="text-links">
+        @Html.Safe(@Model.Html)
+    </div>
 
     <div class="entry-date">
         @Model.Date

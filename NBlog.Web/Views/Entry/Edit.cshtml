@@ -1,45 +1,46 @@
 ﻿@model EntryController.EditModel
 @{
-    View.Title = "Edit Entry: " + Model.Title;
+    var IsCreating = string.IsNullOrWhiteSpace(Model.Slug);
+    View.Title = IsCreating ? "New Post" : "Edit Post - " + Model.Title;
+    var Heading = IsCreating ? "New Post" : "Edit Post";
 }
-<article>
-    <h1>Add/Edit Entry</h1>
+<article class="form">
+
+    <h1>@Heading</h1>
     
     @{ Html.EnableClientValidation(false); }
 
     @using (Html.BeginForm())
     {
-    
         @Html.ValidationSummary()
         
         @Html.AntiForgeryToken()
         
         @Html.HiddenFor(m => m.Slug)
 
-        @Html.LabelFor(m => m.Title)<br />
-        @Html.EditorFor(m => m.Title)
-        @Html.ValidationMessageFor(m => m.Title)
-
-        <br /><br />
-        
-        @Html.LabelFor(m => m.NewSlug)<br />
-        @Html.EditorFor(m => m.NewSlug)
-        @Html.ValidationMessageFor(m => m.NewSlug)
-
-        <br /><br />
-                
-        <div style="width:700px;">
-            @Html.LabelFor(m => m.Markdown)<br />
-            @Html.TextAreaFor(m => m.Markdown, new { style = "width:100%; height:250px;" })
+        <div class="field">
+            @Html.LabelFor(m => m.Title)<br />
+            @Html.EditorFor(m => m.Title)
+            @Html.ValidationMessageFor(m => m.Title)
         </div>
         
-        <br />
-        <div>
+       if (!IsCreating)
+       {
+            <div class="field">
+                @Html.LabelFor(m => m.NewSlug)<br />
+                @Html.TextBoxFor(m => m.NewSlug, new { @class = "text-box" })
+                @Html.ValidationMessageFor(m => m.NewSlug)
+            </div>
+       }
+        
+        <div class="field markdown">
+            @Html.TextAreaFor(m => m.Markdown, new { @class = "text-box" })
+        </div>
+        
+        <div class="field">
             <input type="submit" value="Save" />
             @Html.ActionLink("< Back", "Index", "Home", null, new { @class = "button" })
         </div>
-        <br />
-        <br />
     }
 
 </article>

@@ -3,7 +3,7 @@
 
     @if (Model.Base.IsAdmin)
     {
-        <div class="admin-box">
+        <div class="admin-box text-links">
             Admin:
             @Html.ActionLink("New Entry", "Edit", "Entry")
         </div>
@@ -11,7 +11,7 @@
 
     <h1>Latest Posts</h1>
         
-    <ul class="entry-list">
+    <ul class="entry-list text-links">
     @foreach (var entry in Model.Entries)
     {
         <li>
