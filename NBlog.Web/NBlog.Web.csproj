@@ -129,6 +129,7 @@
     <Compile Include="Application\StringExtensions.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\SearchController.Models.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\AuthenticationController.Models.cs" />
     <Compile Include="Controllers\EntryController.Models.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Application\LayoutModel.cs" />
     <Compile Include="Controllers\HomeController.Models.cs" />
     <Compile Include="Controllers\FeedController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,6 +261,7 @@
     <Content Include="Resources\Scripts\MicrosoftMvcValidation.debug.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\Config\localhost-8080.json" />

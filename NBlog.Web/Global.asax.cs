@@ -36,6 +36,9 @@ namespace NBlog.Web
             // feed
             routes.MapRouteLowercase("", "feed", new { controller = "Feed", action = "Index" });
 
+            // search
+            routes.MapRouteLowercase("", "search", new { controller = "Search", action = "Index" });
+
             // entry pages
             routes.MapRouteLowercase("", "{id}", new { controller = "Entry", action = "Show" });
 

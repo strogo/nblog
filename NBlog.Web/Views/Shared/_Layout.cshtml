@@ -50,7 +50,7 @@
 				@(Model.Base.IsAuthenticated ? Html.ActionLink("Sign Out", "Logout", "Authentication") : Html.ActionLink("Sign In", "Login", "Authentication"))
 			</div>
 			<div id="search">
-				<form>
+				<form action="@Url.Action("Index", "Search")">
 					<input type="text" class="box" name="q" value="search" />
 				</form>
 			</div>
@@ -65,7 +65,7 @@
         }
         else
         {
-            @Html.Raw(Model.Base.Crossbar)
+            @Html.Safe(Model.Base.Crossbar)
         }
             </div>
 	    @RenderBody()

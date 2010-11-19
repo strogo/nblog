@@ -25,7 +25,7 @@ namespace NBlog.Web.Controllers
                     {
                         Key = e.Slug,
                         Title = e.Title,
-                        Date = e.DateCreated.ToString("dddd, dd MMMM yyyy"),
+                        Date = e.DateCreated.ToDateString(),
                         PrettyDate = e.DateCreated.ToPrettyDate()
                     })
             };

@@ -23,5 +23,10 @@ namespace NBlog.Web.Application
             if (timeSince.TotalDays < 730) return "last year";
             return string.Format("{0} years ago", Math.Round(timeSince.TotalDays / 365));
         }
+
+        public static string ToDateString(this DateTime date)
+        {
+            return date.ToString("dddd, dd MMMM yyyy");
+        }
     }
 }
