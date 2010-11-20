@@ -112,7 +112,7 @@ namespace NBlog.Web.Controllers
             var entry = Services.Entry.GetBySlug(model.Slug);
             entry.Title = model.Title;
             entry.Markdown = model.Markdown;
-
+            
             var slugChanged =
                 !string.Equals(model.Slug, model.NewSlug, StringComparison.InvariantCultureIgnoreCase)
                 && !string.IsNullOrWhiteSpace(model.NewSlug);

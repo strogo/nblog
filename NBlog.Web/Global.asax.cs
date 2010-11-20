@@ -28,6 +28,7 @@ namespace NBlog.Web
 
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.RouteExistingFiles = false;
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             // homepage
@@ -61,7 +62,7 @@ namespace NBlog.Web
             builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker().InstancePerHttpRequest();
 
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
-            builder.RegisterType<JsonRepository>().As<IRepository>().InstancePerHttpRequest().WithParameter("dataPath", HttpContext.Current.Server.MapPath("~/App_Data/"));
+            builder.RegisterType<JsonRepository>().As<IRepository>().InstancePerHttpRequest().WithParameter("dataPath", HttpContext.Current.Server.MapPath("~/App_Data_CF/"));
             builder.RegisterType<ConfigService>().As<IConfigService>().InstancePerHttpRequest();
             builder.RegisterType<EntryService>().As<IEntryService>().InstancePerHttpRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerHttpRequest();
