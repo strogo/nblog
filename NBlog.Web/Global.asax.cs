@@ -56,13 +56,15 @@ namespace NBlog.Web
 
         protected void Application_Start()
         {
+            const string dataPath = "~/App_Data/";
+
             var builder = new ContainerBuilder();
 
             builder.RegisterType<ExtensibleActionInvoker>().As<IActionInvoker>().InstancePerHttpRequest();
             builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker().InstancePerHttpRequest();
 
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
-            builder.RegisterType<JsonRepository>().As<IRepository>().InstancePerHttpRequest().WithParameter("dataPath", HttpContext.Current.Server.MapPath("~/App_Data_CF/"));
+            builder.RegisterType<JsonRepository>().As<IRepository>().InstancePerHttpRequest().WithParameter("dataPath", HttpContext.Current.Server.MapPath(dataPath));
             builder.RegisterType<ConfigService>().As<IConfigService>().InstancePerHttpRequest();
             builder.RegisterType<EntryService>().As<IEntryService>().InstancePerHttpRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerHttpRequest();
