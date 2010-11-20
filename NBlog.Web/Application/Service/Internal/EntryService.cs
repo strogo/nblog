@@ -55,5 +55,10 @@ namespace NBlog.Web.Application.Service.Internal
         {
             _repository.Delete<Entry, string>(slug);
         }
+
+        public bool Exists(string slug)
+        {
+            return _repository.Exists<Entry>(slug);
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace NBlog.Web.Application.Service
         Entry GetBySlug(string slug);
         List<Entry> GetList();
         void Delete(string slug);
+        bool Exists(string slug);
     }
 }

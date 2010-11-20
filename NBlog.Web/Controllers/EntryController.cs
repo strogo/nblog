@@ -46,15 +46,47 @@ namespace NBlog.Web.Controllers
 
         [AdminOnly]
         [HttpGet]
+        public ActionResult Add()
+        {
+            return View("Edit", new EditModel());
+        }
+
+
+        [AdminOnly]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Add(EditModel model)
+        {
+            var slug = model.Title.ToUrlSlug();
+
+            // (field is hidden when creating a new entry, so don't validate it)
+            ModelState["NewSlug"].Errors.Clear();
+
+            if (Services.Entry.Exists(slug))
+                ModelState.AddModelError("Title", "Sorry, a post already exists with the slug '" + slug + "', please change the title.");
+
+            if (!ModelState.IsValid)
+                return View("Edit", model);
+
+            var entry = new Entry
+            {
+                Title = model.Title,
+                Markdown = model.Markdown,
+                Slug = slug,
+                Author = Services.User.Current.FriendlyName,
+                DateCreated = DateTime.Now
+            };
+
+            Services.Entry.Save(entry);
+
+            return RedirectToAction("Show", "Entry", new { id = entry.Slug });
+        }
+
+
+        [AdminOnly]
+        [HttpGet]
         public ActionResult Edit([Bind(Prefix = "id")] string slug)
         {
-            var isCreatingNew = string.IsNullOrWhiteSpace(slug);
-
-            if (isCreatingNew)
-            {
-                return View(new EditModel());
-            }
-
             var entry = Services.Entry.GetBySlug(slug);
 
             var model = new EditModel
@@ -68,52 +100,32 @@ namespace NBlog.Web.Controllers
             return View(model);
         }
 
+
         [AdminOnly]
         [ValidateAntiForgeryToken]
         [HttpPost]
         public ActionResult Edit(EditModel model)
         {
-            var isCreatingNew = string.IsNullOrWhiteSpace(model.Slug);
-            
-            if (isCreatingNew)
-            {
-                // field is hidden when created a new entry, so don't validate it
-                ModelState["NewSlug"].Errors.Clear();
-            }
-
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
-            
-            Entry entry = null;
 
-            if (isCreatingNew)
+            var entry = Services.Entry.GetBySlug(model.Slug);
+            entry.Title = model.Title;
+            entry.Markdown = model.Markdown;
+
+            var slugChanged =
+                !string.Equals(model.Slug, model.NewSlug, StringComparison.InvariantCultureIgnoreCase)
+                && !string.IsNullOrWhiteSpace(model.NewSlug);
+
+            if (slugChanged)
             {
-                entry = new Entry
+                if (Services.Entry.Exists(model.NewSlug))
                 {
-                    Title = model.Title,
-                    Markdown = model.Markdown,
-                    Slug = model.Title.ToUrlSlug(),
-                    Author = Services.User.Current.FriendlyName,
-                    DateCreated = DateTime.Now
-                };
-            }
-            else
-            {
-                entry = Services.Entry.GetBySlug(model.Slug);
-                entry.Title = model.Title;
-                entry.Markdown = model.Markdown;
-
-                var slugChanged =
-                    !string.Equals(model.Slug, model.NewSlug, StringComparison.InvariantCultureIgnoreCase)
-                    && !string.IsNullOrWhiteSpace(model.NewSlug);
-
-                if (slugChanged)
-                {
-                    Services.Entry.Delete(model.Slug);
-                    entry.Slug = model.NewSlug;
+                    ModelState.AddModelError("NewSlug", "Sorry, a post with that slug already exists.");
+                    return View(model);
                 }
+                Services.Entry.Delete(model.Slug);
+                entry.Slug = model.NewSlug;
             }
 
             Services.Entry.Save(entry);
