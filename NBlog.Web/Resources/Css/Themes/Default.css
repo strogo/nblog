@@ -99,8 +99,8 @@ ul.entry-list li .date { font-size: 100%; }
 .form input#NewSlug { width: 800px; }
 
 .form .text-box, .form textarea, .form .wmd-preview, .field-validation-error { border: 1px solid #bbb; padding: 5px 7px; }
-.form .text-box, .form .markdown, .form .wmd-preview { width: 800px; }
-.form .markdown textarea {height: 350px;}
+.form .text-box, .form .markdown, .form .wmd-preview { width: 100%; }
+.form textarea { height: 350px; }
 .form .wmd-preview{ background-color:#eee; }
 
 .form label {font-weight:bold; margin-bottom:15px;}
@@ -112,7 +112,13 @@ a.button {color:}
     margin-bottom: 25px;
 }
 
-.field-validation-error{ display:block; color: #aa0000; border: 1px dotted #aa0000; background-color: #ffdddd; width: 800px; margin: 15px 0; }
+.form .field.short { width: 400px; }
+.form .field.medium { width: 600px; }
+.form .field.long { width: 800px; }
+.form .field textarea.small { height: 175px; }
+
+.field-validation-error { display:block; color: #aa0000; border: 1px dotted #aa0000; background-color: #ffdddd; width: 100%; margin: 15px 0; }
 
 ::-moz-selection{ background: #FFFF55; color:#333; text-shadow: none; }
 ::selection { background: #FFFF55; color:#333; text-shadow: none; } 
+

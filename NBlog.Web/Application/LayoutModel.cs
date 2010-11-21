@@ -15,6 +15,7 @@
             public string SiteTagline { get; set; }
             public string Crossbar { get; set; }
             public string GoogleAnalyticsId { get; set; }
+            public string TwitterUsername { get; set; }
         }
     }
 }

@@ -8,5 +8,6 @@
 	[
 		"http://cxfx.myopenid.com/"
 	],
-	"GoogleAnalyticsId": ""
+	"GoogleAnalyticsId": "",
+	"TwitterUsername": "twitter"
 }

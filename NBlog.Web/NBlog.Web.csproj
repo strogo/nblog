@@ -147,6 +147,8 @@
     <Compile Include="Application\Storage\Json\JsonRepository.cs" />
     <Compile Include="Application\StringExtensions.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ContactController.Models.cs" />
     <Compile Include="Controllers\SearchController.Models.cs" />
     <Compile Include="Controllers\EntryController.cs" />
     <Compile Include="Controllers\AuthenticationController.Models.cs" />
@@ -171,7 +173,6 @@
     <Content Include="Resources\Css\jquery-ui-smoothness.css" />
     <Content Include="Resources\Css\Style.css" />
     <Content Include="Resources\Css\Themes\Default.css" />
-    <Content Include="Resources\Css\Validation.css" />
     <Content Include="Resources\Scripts\dd_belatedpng.js" />
     <Content Include="Resources\Scripts\Fancybox\blank.gif" />
     <Content Include="Resources\Scripts\Fancybox\fancybox-x.png" />
@@ -253,7 +254,12 @@
     <None Include="App_Data\Entry\fusce-eget-neque-molestie-lorem-vestibulum-accumsan-sed-nec-augue.json" />
     <None Include="App_Data\Entry\lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit.json" />
     <None Include="App_Data\Entry\pellentesque-orci-mauris-imperdiet-et-varius-id.json" />
+    <None Include="CodeTemplates\AddController\Controller.tt">
+      <LastGenOutput>Controller.cs</LastGenOutput>
+    </None>
     <None Include="Views\Authentication\Login.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Contact\Confirm.cshtml" />
     <None Include="Views\Entry\Edit.cshtml" />
     <None Include="Views\Entry\Show.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
@@ -291,6 +297,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data_CF\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

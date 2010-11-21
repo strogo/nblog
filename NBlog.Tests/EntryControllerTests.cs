@@ -18,11 +18,6 @@ namespace NBlog.Tests
     {
         public EntryControllerTests()
         {
-            var a = 100;
-            var b = "yeah";
-            var str = new List<Object>();
-
-
             //
             // TODO: Add constructor logic here
             //

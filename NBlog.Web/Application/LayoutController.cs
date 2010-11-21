@@ -48,6 +48,7 @@ namespace NBlog.Web.Application
             model.Base.SiteTitle = config.Title;
             model.Base.Crossbar = config.Crossbar;
             model.Base.GoogleAnalyticsId = config.GoogleAnalyticsId;
+            model.Base.TwitterUsername = config.TwitterUsername;
         }
     }
 }

@@ -14,7 +14,7 @@
         
         @Html.HiddenFor(m => m.Slug)
         
-        <div class="field">
+        <div class="field long">
             @Html.LabelFor(m => m.Title)<br />
             @Html.EditorFor(m => m.Title)
             @Html.ValidationMessageFor(m => m.Title)
@@ -22,14 +22,14 @@
         
        if (!IsCreating)
        {
-            <div class="field">
+            <div class="field long">
                 @Html.LabelFor(m => m.NewSlug)<br />
                 @Html.TextBoxFor(m => m.NewSlug, new { @class = "text-box" })
                 @Html.ValidationMessageFor(m => m.NewSlug)
             </div>
        }
         
-        <div class="field markdown">
+        <div class="field long markdown">
             @Html.TextAreaFor(m => m.Markdown, new { @class = "text-box" })
             @Html.ValidationMessageFor(m => m.Markdown)
         </div>

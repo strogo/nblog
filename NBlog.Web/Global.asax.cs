@@ -40,6 +40,9 @@ namespace NBlog.Web
             // search
             routes.MapRouteLowercase("", "search", new { controller = "Search", action = "Index" });
 
+            // search
+            routes.MapRouteLowercase("", "contact", new { controller = "Contact", action = "Index" });
+
             // entry pages
             routes.MapRouteLowercase("", "{id}", new { controller = "Entry", action = "Show" });
 
@@ -56,7 +59,7 @@ namespace NBlog.Web
 
         protected void Application_Start()
         {
-            const string dataPath = "~/App_Data/";
+            const string dataPath = "~/App_Data_CF/";
 
             var builder = new ContainerBuilder();
 
