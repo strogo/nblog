@@ -38,5 +38,11 @@ namespace NBlog.Web.Controllers
         {
             throw new NotImplementedException("Example exception for testing error handling.");
         }
+
+        [HttpGet]
+        public ActionResult WhoAmI()
+        {
+            return Content(User.Identity.Name.AsNullIfEmpty() ?? "Not logged in");
+        }
     }
 }
