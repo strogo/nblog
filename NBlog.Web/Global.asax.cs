@@ -59,7 +59,7 @@ namespace NBlog.Web
 
         protected void Application_Start()
         {
-            const string dataPath = "~/App_Data_CF/";
+            const string dataPath = "~/App_Data/";
 
             var builder = new ContainerBuilder();
 
@@ -71,6 +71,7 @@ namespace NBlog.Web
             builder.RegisterType<ConfigService>().As<IConfigService>().InstancePerHttpRequest();
             builder.RegisterType<EntryService>().As<IEntryService>().InstancePerHttpRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerHttpRequest();
+            builder.RegisterType<MessageService>().As<IMessageService>().InstancePerHttpRequest();
             builder.RegisterType<Services>().As<IServices>().InstancePerHttpRequest();
 
             _containerProvider = new ContainerProvider(builder.Build());

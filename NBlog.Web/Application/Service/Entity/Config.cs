@@ -13,5 +13,13 @@ namespace NBlog.Web.Application.Service.Entity
         public List<string> Admins { get; set; }
         public string GoogleAnalyticsId { get; set; }
         public string TwitterUsername { get; set; }
+        public ContactFormConfig ContactForm { get; set; }
+        
+        public class ContactFormConfig
+        {
+            public string RecipientName { get; set; }
+            public string RecipientEmail { get; set; }
+            public string Subject { get; set; }
+        }
     }
 }

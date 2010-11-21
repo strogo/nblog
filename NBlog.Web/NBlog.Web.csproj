@@ -133,6 +133,7 @@
     <Compile Include="Application\Service\Entity\Config.cs" />
     <Compile Include="Application\Service\IConfigService.cs" />
     <Compile Include="Application\Service\IEntryService.cs" />
+    <Compile Include="Application\Service\Internal\MessageService.cs" />
     <Compile Include="Application\Service\IServices.cs" />
     <Compile Include="Application\Service\IUserService.cs" />
     <Compile Include="Application\Service\Internal\Services.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Application\Service\Internal\UserService.cs" />
     <Compile Include="Application\Html\SecurityExtensions.cs" />
     <Compile Include="Application\Service\Internal\ConfigService.cs" />
+    <Compile Include="Application\Service\MessageService.cs" />
     <Compile Include="Application\Storage\IRepository.cs" />
     <Compile Include="Application\Storage\Json\JsonRepository.cs" />
     <Compile Include="Application\StringExtensions.cs" />

@@ -18,10 +18,9 @@ namespace NBlog.Web.Controllers
 
             [DisplayName("Your email address")]
             [Required(ErrorMessage = "Please enter your email address.")]
-            [DataType(DataType.EmailAddress, ErrorMessage = "Please enter a valid email address.")]
             public string SenderEmail { get; set; }
 
-            [Required(ErrorMessage = "Please enter a message.")]
+            [Required(ErrorMessage = "Please enter your message.")]
             public string Message { get; set; }
         }
     }
