@@ -11,6 +11,7 @@
             @Html.ActionLink("Edit", "Edit", "Entry", new { id = Model.Slug }, null)
         </div>
     }
+    
     <h1>@Model.Title</h1>
     
     <div class="text-links">
@@ -20,4 +21,8 @@
     <div class="entry-date">
         @Model.Date
     </div>
+
+    <p>
+        @Html.ActionLink("Read more posts »", "Index", "Home")
+    </p>
 </article>
