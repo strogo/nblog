@@ -46,6 +46,10 @@
 <script>
 
     $(function () {
+        window.onbeforeunload = function() { 
+            return 'If you navigate away from this page you\'ll lose any unsaved changes';
+        }
+
         $("textarea#Markdown").wmd({
 		    "preview": true,
             "helpLink": "http://daringfireball.net/projects/markdown/",
