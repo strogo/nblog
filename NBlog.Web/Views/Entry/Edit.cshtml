@@ -52,11 +52,18 @@
 <script>
 
     $(function () {
-        window.onbeforeunload = function() { 
-            return 'If you navigate away from this page you\'ll lose any unsaved changes';
+        
+        var alertOnLeaving = true;
+        window.onbeforeunload = function() {
+            return alertOnLeaving ? 'If you navigate away from this page you\'ll lose any unsaved changes' : null;
         }
 
         $("#Date").datepicker();
+        
+        $(".form form").submit(function() {
+            if ($(this).valid()) { alertOnLeaving = false; }
+        });
+        
 
         $("textarea#Markdown").wmd({
 		    "preview": true,
