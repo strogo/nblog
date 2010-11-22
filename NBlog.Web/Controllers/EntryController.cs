@@ -59,8 +59,9 @@ namespace NBlog.Web.Controllers
         {
             var slug = model.Title.ToUrlSlug();
 
-            // (field is hidden when creating a new entry, so don't validate it)
+            // (these fields are hidden when creating a new entry, so don't validate them)
             ModelState["NewSlug"].Errors.Clear();
+            ModelState["Date"].Errors.Clear();
 
             if (Services.Entry.Exists(slug))
                 ModelState.AddModelError("Title", "Sorry, a post already exists with the slug '" + slug + "', please change the title.");
@@ -92,6 +93,7 @@ namespace NBlog.Web.Controllers
             var model = new EditModel
             {
                 Title = entry.Title,
+                Date = entry.DateCreated.ToString("dd MMM yyyy"),
                 Markdown = entry.Markdown,
                 Slug = slug,
                 NewSlug = slug
@@ -111,6 +113,7 @@ namespace NBlog.Web.Controllers
 
             var entry = Services.Entry.GetBySlug(model.Slug);
             entry.Title = model.Title;
+            entry.DateCreated = DateTime.Parse(model.Date);
             entry.Markdown = model.Markdown;
             
             var slugChanged =

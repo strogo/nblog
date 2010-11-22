@@ -27,6 +27,12 @@
                 @Html.TextBoxFor(m => m.NewSlug, new { @class = "text-box" })
                 @Html.ValidationMessageFor(m => m.NewSlug)
             </div>
+            
+            <div class="field short">
+                @Html.LabelFor(m => m.Date)<br />
+                @Html.TextBoxFor(m => m.Date, new { @class = "text-box" })
+                @Html.ValidationMessageFor(m => m.Date)
+            </div>
        }
         
         <div class="field long markdown">
@@ -49,6 +55,8 @@
         window.onbeforeunload = function() { 
             return 'If you navigate away from this page you\'ll lose any unsaved changes';
         }
+
+        $("#Date").datepicker();
 
         $("textarea#Markdown").wmd({
 		    "preview": true,

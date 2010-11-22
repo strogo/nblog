@@ -24,16 +24,18 @@ namespace NBlog.Web.Application.Service.Internal
 
             entry.Slug = entry.Slug.ToLowerInvariant();
 
-            var creatingNew = _repository.Exists<Entry>(entry.Slug);
-
-            if (creatingNew)
+            if (entry.DateCreated == default(DateTime))
             {
-                var oldEntry = _repository.Single<Entry, string>(entry.Slug);
-                entry.DateCreated = oldEntry.DateCreated;
-            }
-            else
-            {
-                entry.DateCreated = DateTime.Now;
+                var isUpdate = _repository.Exists<Entry>(entry.Slug);
+                if (isUpdate)
+                {
+                    var oldEntry = _repository.Single<Entry, string>(entry.Slug);
+                    entry.DateCreated = oldEntry.DateCreated;                    
+                }
+                else
+                {
+                    entry.DateCreated = DateTime.Now;
+                }
             }
 
             entry.Author = _userService.Current.FriendlyName;

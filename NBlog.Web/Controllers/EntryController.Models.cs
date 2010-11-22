@@ -19,7 +19,12 @@ namespace NBlog.Web.Controllers
             [Required(ErrorMessage = "Please supply a slug for this post")]
             [RegularExpression("^[a-zA-Z0-9-]+$", ErrorMessage = "That's not a valid slug. Only letters, numbers and hypens are allowed.")]
             public string NewSlug { get; set; }
-            
+
+            [SkipRequestValidation]
+            [Required(ErrorMessage = "Please enter the date this post was created.")]
+            public string Date { get; set; }
+
+            [SkipRequestValidation]
             [Required(ErrorMessage = "Please enter the title of this post.")]
             public string Title { get; set; }
 

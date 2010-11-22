@@ -114,6 +114,16 @@
 
 <script>
     $(function () {
+        $.datepicker.setDefaults({
+            dateFormat: 'dd M yy',
+            changeMonth: true,
+            changeYear: true,
+            constrainInput: true,
+            currentText: 'Today',
+            showAnim: 'slide',
+            showButtonPanel: true
+
+        });
         $("#search .box").watermark("search");
         $("input:submit, input:button, a.button, button").button();
         var a = $("pre:has(code)").addClass("prettyprint");
