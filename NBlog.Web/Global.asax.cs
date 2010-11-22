@@ -59,7 +59,7 @@ namespace NBlog.Web
 
         protected void Application_Start()
         {
-            const string dataPath = "~/App_Data_CF/";
+            const string dataPath = "~/App_Data/";
 
             var builder = new ContainerBuilder();
 
