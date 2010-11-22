@@ -12,6 +12,8 @@
             public string FriendlyUsername { get; set; }
             public string Theme { get; set; }
             public string SiteTitle { get; set; }
+            public string SiteMetaDescription { get; set; }
+            public string SiteHeading { get; set; }
             public string SiteTagline { get; set; }
             public string Crossbar { get; set; }
             public string GoogleAnalyticsId { get; set; }

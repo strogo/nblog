@@ -15,6 +15,7 @@
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>@(View.Title ?? Model.Base.SiteTitle)</title>
+    <meta name="description" content="@Model.Base.SiteMetaDescription">
 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
     <link href="@Url.Action("Index", "Feed")" rel="alternate" type="application/rss+xml" title="@Model.Base.SiteTitle" />
@@ -22,8 +23,8 @@
 	<link rel="shortcut icon" href="@Url.Content("~/favicon.ico")">
 	<link rel="stylesheet" href="@Url.Content("~/resources/css/style.css")">
 	
-    <link rel="Stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
-    <link rel="Stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/smoothness/jquery-ui.css" />
+    <link rel="Stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
+    <link rel="Stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/themes/smoothness/jquery-ui.css">
 
     @Html.Raw(
         Bundle.Css()
@@ -50,7 +51,7 @@
 		<div id="site">
             <a href="@Url.Action("Index", "Home")">
 			    <div id="site-name">
-				    @Model.Base.SiteTitle
+				    @Model.Base.SiteHeading
 			    </div>
 			    <div id="tag-line">@Model.Base.SiteTagline</div>
             </a>

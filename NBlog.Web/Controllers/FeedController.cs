@@ -25,13 +25,15 @@ namespace NBlog.Web.Controllers
             
             var entries =
                 _services.Entry.GetList()
+                .OrderByDescending(e => e.DateCreated)
+                .Take(10)
                 .Select(e => new SyndicationItem(
                     e.Title,
                     markdown.Transform(e.Markdown),
                     new Uri(baseUri, Url.Action("Show", "Entry", new { id = e.Slug }, null))));
 
             var feed = new SyndicationFeed(
-                title: _services.Config.Current.Title,
+                title: _services.Config.Current.Heading,
                 description: _services.Config.Current.Tagline,
                 feedAlternateLink: new Uri(baseUri, Url.Action("Index", "Feed")),
                 items: entries);

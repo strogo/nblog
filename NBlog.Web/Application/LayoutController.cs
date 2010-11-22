@@ -39,16 +39,20 @@ namespace NBlog.Web.Application
             var currentUser = Services.User.Current;
             var config = Services.Config.Current;
             
-            model.Base = new LayoutModel.LayoutBaseModel();
-            model.Base.FriendlyUsername = currentUser.FriendlyName;
-            model.Base.IsAuthenticated = currentUser.IsAuthenticated;
-            model.Base.IsAdmin = currentUser.IsAdmin;
-            model.Base.Theme = config.Theme;
-            model.Base.SiteTagline = config.Tagline;
-            model.Base.SiteTitle = config.Title;
-            model.Base.Crossbar = config.Crossbar;
-            model.Base.GoogleAnalyticsId = config.GoogleAnalyticsId;
-            model.Base.TwitterUsername = config.TwitterUsername;
+            model.Base = new LayoutModel.LayoutBaseModel
+            {
+                FriendlyUsername = currentUser.FriendlyName,
+                IsAuthenticated = currentUser.IsAuthenticated,
+                IsAdmin = currentUser.IsAdmin,
+                Theme = config.Theme,
+                SiteTitle = config.Title,
+                SiteMetaDescription = config.MetaDescription,
+                SiteTagline = config.Tagline,
+                SiteHeading = config.Heading,
+                Crossbar = config.Crossbar,
+                GoogleAnalyticsId = config.GoogleAnalyticsId,
+                TwitterUsername = config.TwitterUsername
+            };
         }
     }
 }

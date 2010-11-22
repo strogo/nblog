@@ -1,6 +1,6 @@
 ﻿@model EntryController.ShowModel
 @{
-    View.Title = Model.Title;
+    View.Title = Model.Title + " | " + Model.Base.SiteHeading;
 }
 
 <article class="entry">
