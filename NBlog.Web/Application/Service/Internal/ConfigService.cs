@@ -11,9 +11,7 @@ namespace NBlog.Web.Application.Service.Internal
         public ConfigService(IRepository repository)
         {
             _repository = repository;
-
-            var site = HttpContext.Current.Request.Url.Authority.ToUrlSlug();
-            Current = _repository.Single<Config, string>(site);
+            Current = _repository.Single<Config, string>("settings");
         }
 
         public Config Current { get; private set; }

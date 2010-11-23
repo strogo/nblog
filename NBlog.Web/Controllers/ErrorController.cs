@@ -39,6 +39,8 @@ namespace NBlog.Web.Controllers
                     model.Message = "Sorry, something went wrong.  It's been logged.";
                     break;
             }
+            
+            Response.TrySkipIisCustomErrors = true;
 
             return View(model);
         }

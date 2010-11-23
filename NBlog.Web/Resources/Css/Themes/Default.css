@@ -34,6 +34,7 @@ header
 
 
 #site { float: left; margin: 13px 0; background-color:transparent; }
+#site a { text-decoration: none; }
 #site-name { font-size: 160%; }
 #tag-line { font-size: 120%; color:#4a0; }
 
@@ -65,8 +66,8 @@ article.entry ul
 { margin-bottom: 15px; }
 
 .entry-date { margin-bottom: 20px; margin-top: 20px; font-style:italic; }
-pre.prettyprint code { font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif; }
-article.entry pre.prettyprint { font-size: 105%; border: 1px dotted #777; padding: 10px; background-color: #f8f8f8; margin-bottom: 10px; }
+pre.prettyprint code { font-size: 11pt; font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif; }
+article.entry pre.prettyprint { border: 1px dotted #777; padding: 10px; background-color: #f8f8f8; }
 
 footer { margin-top: 30px; margin-bottom: 30px; padding-top: 10px; padding-bottom: 10px; border-top: 1px dotted #999; text-align: center; }
 
@@ -99,6 +100,7 @@ ul.entry-list li .date { font-size: 100%; }
 .form input#NewSlug { width: 800px; }
 
 .form .text-box, .form textarea, .form .wmd-preview, .field-validation-error { border: 1px solid #bbb; padding: 5px 7px; }
+#search .box { border: 1px solid #bbb; padding: 3px 4px; }
 .form .text-box, .form .markdown, .form .wmd-preview { width: 100%; }
 .form textarea { height: 350px; }
 .form .wmd-preview{ background-color:#eee; }

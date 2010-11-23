@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
 using System.Web;
@@ -59,7 +60,7 @@ namespace NBlog.Web
 
         protected void Application_Start()
         {
-            const string dataPath = "~/App_Data/";
+            var dataPath = "~/App_Data/" + ConfigurationManager.AppSettings["NBlog_Site"];
 
             var builder = new ContainerBuilder();
 

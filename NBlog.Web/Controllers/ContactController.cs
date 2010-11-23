@@ -30,6 +30,7 @@ namespace NBlog.Web.Controllers
             var mailMessage = new MailMessage(from, to)
             {
                 Subject = Services.Config.Current.ContactForm.Subject,
+                Body = model.Message,
                 IsBodyHtml = false
             };
 
