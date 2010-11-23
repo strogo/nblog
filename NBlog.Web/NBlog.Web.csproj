@@ -68,6 +68,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\AntiXSSLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="AppLimit.CloudComputing.oAuth">
+      <HintPath>..\lib\SharpBox\AppLimit.CloudComputing.oAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="AppLimit.CloudComputing.SharpBox">
+      <HintPath>..\lib\SharpBox\AppLimit.CloudComputing.SharpBox.dll</HintPath>
+    </Reference>
     <Reference Include="Autofac, Version=2.2.4.900, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Autofac.dll</HintPath>
@@ -96,6 +102,9 @@
     <Reference Include="HtmlSanitizationLibrary, Version=4.0.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\HtmlSanitizationLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\lib\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\lib\MarkdownSharp.dll</HintPath>
@@ -182,9 +191,11 @@
     <Compile Include="Application\Html\SecurityExtensions.cs" />
     <Compile Include="Application\Service\Internal\ConfigService.cs" />
     <Compile Include="Application\Service\MessageService.cs" />
+    <Compile Include="Application\Storage\DropBox\DropBoxArchiver.cs" />
     <Compile Include="Application\Storage\IRepository.cs" />
     <Compile Include="Application\Storage\Json\JsonRepository.cs" />
     <Compile Include="Application\StringExtensions.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContactController.Models.cs" />

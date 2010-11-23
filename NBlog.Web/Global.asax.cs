@@ -60,6 +60,10 @@ namespace NBlog.Web
 
         protected void Application_Start()
         {
+            // hack to redirect the SharpBox dependency on Newtonsoft.Json.[Version]
+            AppDomain.CurrentDomain.AssemblyResolve +=
+                (s, ea) => ea.Name.StartsWith("Newtonsoft.Json") ? Assembly.GetAssembly(typeof(Newtonsoft.Json.JsonConvert)) : null;
+
             var dataPath = "~/App_Data/" + ConfigurationManager.AppSettings["NBlog_Site"];
 
             var builder = new ContainerBuilder();
@@ -86,7 +90,6 @@ namespace NBlog.Web
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
         }
-
 
         protected void Application_Error(object sender, EventArgs e)
         {
