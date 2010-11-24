@@ -61,8 +61,9 @@ namespace NBlog.Web
         protected void Application_Start()
         {
             // hack to redirect the SharpBox dependency on Newtonsoft.Json.[Version]
-            AppDomain.CurrentDomain.AssemblyResolve +=
-                (s, ea) => ea.Name.StartsWith("Newtonsoft.Json") ? Assembly.GetAssembly(typeof(Newtonsoft.Json.JsonConvert)) : null;
+            //AppDomain.CurrentDomain.AssemblyResolve +=
+            //    (s, ea) => ea.Name.StartsWith("Newtonsoft.Json") ?
+            //        Assembly.GetAssembly(typeof(Newtonsoft.Json.JsonConvert)) : null;
 
             var dataPath = "~/App_Data/" + ConfigurationManager.AppSettings["NBlog_Site"];
 
@@ -77,6 +78,7 @@ namespace NBlog.Web
             builder.RegisterType<EntryService>().As<IEntryService>().InstancePerHttpRequest();
             builder.RegisterType<UserService>().As<IUserService>().InstancePerHttpRequest();
             builder.RegisterType<MessageService>().As<IMessageService>().InstancePerHttpRequest();
+            builder.RegisterType<CloudService>().As<ICloudService>().InstancePerHttpRequest();
             builder.RegisterType<Services>().As<IServices>().InstancePerHttpRequest();
 
             _containerProvider = new ContainerProvider(builder.Build());

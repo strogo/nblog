@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NBlog.Web.Application;
 using NBlog.Web.Application.Service.Entity;
 using NBlog.Web.Application.Storage.Json;
+using NSubstitute;
 
 namespace NBlog.Tests
 {

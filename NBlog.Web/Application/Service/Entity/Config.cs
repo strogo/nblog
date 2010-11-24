@@ -16,12 +16,21 @@ namespace NBlog.Web.Application.Service.Entity
         public string GoogleAnalyticsId { get; set; }
         public string TwitterUsername { get; set; }
         public ContactFormConfig ContactForm { get; set; }
-        
+        public CloudConfig Cloud { get; set; }
+
         public class ContactFormConfig
         {
             public string RecipientName { get; set; }
             public string RecipientEmail { get; set; }
             public string Subject { get; set; }
+        }
+
+        public class CloudConfig
+        {
+            public string ConsumerKey { get; set; }
+            public string ConsumerSecret { get; set; }
+            public string UserName { get; set; }
+            public string Password { get; set; }
         }
     }
 }

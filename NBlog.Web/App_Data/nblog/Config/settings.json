@@ -17,5 +17,12 @@
 		"RecipientName": "NBlog Admin",
 		"RecipientEmail": "nblog-admin@mailinator.com",
 		"Subject": "NBlog contact form"
+	},
+	Cloud:
+	{
+		"ConsumerKey": "DropBox_Key",
+		"ConsumerSecret": "DropBox_Secret",
+		"UserName": "DropBox_UserName",
+		"Password": "DropBox_Password"
 	}
 }

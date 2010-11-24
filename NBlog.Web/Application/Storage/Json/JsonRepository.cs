@@ -8,7 +8,6 @@ using AppLimit.CloudComputing.SharpBox;
 using AppLimit.CloudComputing.SharpBox.DropBox;
 using Ionic.Zip;
 using NBlog.Web.Application.Service.Entity;
-using NBlog.Web.Application.Storage.DropBox;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -30,26 +29,8 @@ namespace NBlog.Web.Application.Storage.Json
         }
 
 
-        public string Backup()
-        {
-            var backupName = Path.GetFileName(_dataPath).ToUrlSlug();
-            var timestamp = DateTime.Now.ToString("yyyyMMdd-HHmmss");
-            var backupFilename =  string.Format("{0}-{1}.zip", backupName, timestamp);
+        public string DataPath { get { return _dataPath; } }
 
-            using (var zip = new ZipFile())
-            {
-                zip.AddDirectory(_dataPath);
-
-                using (var zipMemoryStream = new MemoryStream())
-                {
-                    zip.Save(zipMemoryStream);
-                    new DropBoxArchiver().Archive(backupFilename, zipMemoryStream);
-                }
-            }
-
-            return backupFilename;
-        }
-        
 
         public TEntity Single<TEntity>(string key)
         {

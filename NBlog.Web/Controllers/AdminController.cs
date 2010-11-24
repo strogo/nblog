@@ -27,10 +27,10 @@ namespace NBlog.Web.Controllers
             
             if (jsonRepository == null)
                 throw new Exception("Backup currently supports only JsonRepository");
-            
-            var filename = jsonRepository.Backup();
 
-            return Content("Backup complete: " + filename);
+            var backupFilename = Services.Cloud.ArchiveFolder(jsonRepository.DataPath);
+
+            return Content("Backup complete: " + backupFilename);
         }
     }
 
