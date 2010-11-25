@@ -44,5 +44,11 @@ namespace NBlog.Web.Controllers
         {
             return Content(User.Identity.Name.AsNullIfEmpty() ?? "Not logged in");
         }
+
+        [HttpGet]
+        public ActionResult WhatTimeIsIt()
+        {
+            return Content(DateTime.Now.ToString());
+        }
     }
 }

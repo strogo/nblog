@@ -114,6 +114,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Quartz">
+      <HintPath>..\lib\Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="SquishIt.Framework, Version=0.6.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\SquishIt\SquishIt.Framework.dll</HintPath>
@@ -170,6 +173,8 @@
     <Compile Include="Application\AdminOnlyAttribute.cs" />
     <Compile Include="Application\DateExtensions.cs" />
     <Compile Include="Application\Html\HtmlExtensions.cs" />
+    <Compile Include="Application\Job\AutofacJobFactory.cs" />
+    <Compile Include="Application\Job\Backup.cs" />
     <Compile Include="Application\NoBindingAttribute.cs" />
     <Compile Include="Application\RouteExtensions.cs" />
     <Compile Include="Application\RssResult.cs" />
@@ -216,6 +221,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Jobs.config" />
     <Content Include="Resources\Css\Handheld.css" />
     <Content Include="Resources\Css\jquery-ui-base.css" />
     <Content Include="Resources\Css\jquery-ui-smoothness.css" />
@@ -332,6 +338,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Jobs.Debug.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\nblog\Config\settings.json" />

@@ -10,10 +10,13 @@ using Autofac.Integration.Web;
 using Autofac.Integration.Web.Mvc;
 using Elmah;
 using NBlog.Web.Application;
+using NBlog.Web.Application.Job;
 using NBlog.Web.Application.Service;
 using NBlog.Web.Application.Service.Internal;
 using NBlog.Web.Application.Storage;
 using NBlog.Web.Application.Storage.Json;
+using Quartz;
+using Quartz.Impl;
 
 namespace NBlog.Web
 {
@@ -73,17 +76,17 @@ namespace NBlog.Web
             builder.RegisterControllers(Assembly.GetExecutingAssembly()).InjectActionInvoker().InstancePerHttpRequest();
 
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
-            builder.RegisterType<JsonRepository>().As<IRepository>().InstancePerHttpRequest().WithParameter("dataPath", HttpContext.Current.Server.MapPath(dataPath));
-            builder.RegisterType<ConfigService>().As<IConfigService>().InstancePerHttpRequest();
-            builder.RegisterType<EntryService>().As<IEntryService>().InstancePerHttpRequest();
-            builder.RegisterType<UserService>().As<IUserService>().InstancePerHttpRequest();
-            builder.RegisterType<MessageService>().As<IMessageService>().InstancePerHttpRequest();
-            builder.RegisterType<CloudService>().As<ICloudService>().InstancePerHttpRequest();
-            builder.RegisterType<Services>().As<IServices>().InstancePerHttpRequest();
+            builder.RegisterType<JsonRepository>().As<IRepository>().InstancePerLifetimeScope().WithParameter("dataPath", HttpContext.Current.Server.MapPath(dataPath));
+            builder.RegisterType<ConfigService>().As<IConfigService>().InstancePerLifetimeScope();
+            builder.RegisterType<EntryService>().As<IEntryService>().InstancePerLifetimeScope();
+            builder.RegisterType<UserService>().As<IUserService>().InstancePerLifetimeScope();
+            builder.RegisterType<MessageService>().As<IMessageService>().InstancePerLifetimeScope();
+            builder.RegisterType<CloudService>().As<ICloudService>().InstancePerLifetimeScope();
+            builder.RegisterType<Services>().As<IServices>().InstancePerLifetimeScope();
 
             _containerProvider = new ContainerProvider(builder.Build());
 
-            ControllerBuilder.Current.SetControllerFactory(new AutofacControllerFactory(this.ContainerProvider));
+            ControllerBuilder.Current.SetControllerFactory(new AutofacControllerFactory(ContainerProvider));
 
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
@@ -91,6 +94,12 @@ namespace NBlog.Web
 
             HtmlHelper.ClientValidationEnabled = true;
             HtmlHelper.UnobtrusiveJavaScriptEnabled = true;
+
+            // Quartz.NET scheduler
+            ISchedulerFactory factory = new StdSchedulerFactory();
+            var scheduler = factory.GetScheduler();
+            scheduler.JobFactory = new AutofacJobFactory(ContainerProvider);
+            scheduler.Start();
         }
 
         protected void Application_Error(object sender, EventArgs e)
@@ -127,7 +136,7 @@ namespace NBlog.Web
             return true;
         }
 
-        
+
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
             EnforceLowercaseUrl();
